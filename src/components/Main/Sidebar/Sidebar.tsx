@@ -18,19 +18,35 @@ export default function Sidebar() {
       </div>
       <div className='sidebar__menu'>
         <button className='sidebar__button-menu sidebar__button-menu_active'>
-          <img className='sidebar__button-img' src={IconPeople} alt='Иконка людей' />
+          <img
+            className='sidebar__button-img'
+            src={IconPeople}
+            alt='Иконка людей'
+          />
           <h3 className='sidebar__button-name'>Сотрудники</h3>
         </button>
         <button className='sidebar__button-menu'>
-          <img className='sidebar__button-img' src={IconIpr} alt='Иконка людей' />
+          <img
+            className='sidebar__button-img'
+            src={IconIpr}
+            alt='Иконка людей'
+          />
           <h3 className='sidebar__button-name'>Мой ИПР</h3>
         </button>
         <button className='sidebar__button-menu'>
-          <img className='sidebar__button-img' src={IconCompatation} alt='Иконка людей' />
+          <img
+            className='sidebar__button-img'
+            src={IconCompatation}
+            alt='Иконка людей'
+          />
           <h3 className='sidebar__button-name'>Компетенции</h3>
         </button>
         <button className='sidebar__button-menu'>
-          <img className='sidebar__button-img' src={IconTest} alt='Иконка людей' />
+          <img
+            className='sidebar__button-img'
+            src={IconTest}
+            alt='Иконка людей'
+          />
           <h3 className='sidebar__button-name'>Результаты тестов</h3>
         </button>
       </div>

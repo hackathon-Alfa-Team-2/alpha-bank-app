@@ -15,7 +15,10 @@ export default function Main() {
         <Routes>
           <Route path='/list-of-workers' element={<ListWorkers />} />
           <Route path='/list-of-workers/worker' element={<Worker />} />
-          <Route path='/list-of-workers/worker/indidvidual-plan' element={<IndidvidualPlan />} />
+          <Route
+            path='/list-of-workers/worker/indidvidual-plan'
+            element={<IndidvidualPlan />}
+          />
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/set-of-task' element={<SetTask />} />
         </Routes>
