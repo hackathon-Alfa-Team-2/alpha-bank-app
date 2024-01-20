@@ -7,15 +7,16 @@
 }
 
 .sidebar__container {
-  margin: 36px auto 29px;
+  margin: 32px auto 40px;
 }
 
 .sidebar__button {
   border: 0;
   background-color: #fff;
-  padding: 12px 28px;
+  padding: 10px 8px 10px 10px;
   display: flex;
   cursor: pointer;
+  margin-left: 28px;
 }
 
 .sidebar__img {

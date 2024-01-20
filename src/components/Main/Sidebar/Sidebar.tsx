@@ -1,6 +1,10 @@
 import "./Sidebar.css";
 import Arrow from "../../../assets/arrow.left.svg";
 import IconPeople from "../../../assets/icon-people.svg";
+import IconIpr from "../../../assets/icon-IPR.svg";
+import IconCompatation from "../../../assets/icon-brain.svg";
+import IconTest from "../../../assets/icon-library.svg";
+
 
 export default function Sidebar() {
   return (
@@ -28,7 +32,7 @@ export default function Sidebar() {
         <button className="sidebar__button-menu">
           <img
             className="sidebar__button-img"
-            src={IconPeople}
+            src={IconIpr}
             alt="Иконка людей"
           />
           <h3 className="sidebar__button-name">Мой ИПР</h3>
@@ -36,7 +40,7 @@ export default function Sidebar() {
         <button className="sidebar__button-menu">
           <img
             className="sidebar__button-img"
-            src={IconPeople}
+            src={IconCompatation}
             alt="Иконка людей"
           />
           <h3 className="sidebar__button-name">Компетенции</h3>
@@ -44,7 +48,7 @@ export default function Sidebar() {
         <button className="sidebar__button-menu">
           <img
             className="sidebar__button-img"
-            src={IconPeople}
+            src={IconTest}
             alt="Иконка людей"
           />
           <h3 className="sidebar__button-name">Результаты тестов</h3>
