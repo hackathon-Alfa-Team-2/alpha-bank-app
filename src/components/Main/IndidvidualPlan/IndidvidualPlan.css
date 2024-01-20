@@ -1,16 +1,16 @@
 .indidvidualPlan {
   margin: 0 auto;
-  padding: 0;
+  padding: 28px 28px 0 24px;
   box-sizing: border-box;
   width: 100%;
 }
 
-.worker__container {
+.indidvidualPlan__container {
   display: flex;
   margin: 0;
 }
 
-.worker__adress {
+.indidvidualPlan__adress {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
@@ -20,7 +20,7 @@
   color: #05081d61;
 }
 
-.worker__arrow {
+.indidvidualPlan__arrow {
   width: 24px;
   height: 24px;
 }
