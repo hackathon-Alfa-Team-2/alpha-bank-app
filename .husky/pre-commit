@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Run precommit script"
+npm run lint
+npm run prettier
+npm run test
+git add .

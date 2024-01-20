@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { DropdownContext } from '../Dropdown.context';
+import { useContext } from 'react'
+import { DropdownContext } from '../Dropdown.context'
 
 /**
  * Хук для доступа к контексту Dropdown.
@@ -35,9 +35,9 @@ import { DropdownContext } from '../Dropdown.context';
  * // В этом примере DropdownStatusIndicator будет отображать текст 'открыт', когда дропдаун открыт, и 'закрыт', когда закрыт.
  */
 export const useDropdownContext = () => {
-  const context = useContext(DropdownContext);
+  const context = useContext(DropdownContext)
   if (!context) {
-    throw new Error('useDropdownContext должен использоваться внутри Dropdown');
+    throw new Error('useDropdownContext должен использоваться внутри Dropdown')
   }
-  return context;
-};
+  return context
+}
