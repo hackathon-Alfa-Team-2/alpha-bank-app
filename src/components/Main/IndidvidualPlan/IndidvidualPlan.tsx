@@ -20,7 +20,6 @@ export default function IndidvidualPlan() {
         </div>
         <button className="worker__button">Создать ИПР +</button>
       </div>
-
       
     </div>
   );
