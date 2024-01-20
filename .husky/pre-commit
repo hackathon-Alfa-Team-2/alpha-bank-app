@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "Run precommit script"
+echo -e "\033[1;33mRUN PRECOMMIT SCRIPT\033[0m"
+
 npm run lint
 npm run prettier
 npm run test
