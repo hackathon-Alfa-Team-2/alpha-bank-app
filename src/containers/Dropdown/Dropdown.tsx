@@ -1,11 +1,9 @@
 import { useState, useContext, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import React from 'react';
 import {
   TContentProps,
   TDropdownProps,
   TTriggerProps,
-  TWithIsOpenProp,
 } from './Dropdown.type';
 import { DropdownContext } from './Dropdown.context';
 
@@ -47,59 +45,10 @@ const Dropdown = ({ children, className, style }: TDropdownProps) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
-  /**
-   * Этот фрагмент кода отвечает за распространение состояния `isOpen` на все дочерние компоненты `Dropdown`.
-   * Он перебирает всех детей (children), переданных в `Dropdown`, и добавляет к каждому из них проп `isOpen`.
-   * Это позволяет дочерним компонентам знать о текущем состоянии дропдауна (открыт или закрыт) и соответственно
-   * реагировать на это изменение состояния.
-   *
-   * @remarks
-   * - `React.Children.map` используется для итерации по каждому ребенку в `children`.
-   * - `React.isValidElement` проверяет, является ли элемент действительным React элементом.
-   * - `React.cloneElement` создает клон элемента с добавленным новым пропом `isOpen`.
-   *
-   * Это нужно чтобы дочерние компоненты меняли свое поведение или стиль в зависимости от того,
-   * открыт ли Dropdown или нет.
-   *
-   * @example
-   * // В компоненте Dropdown:
-   * ```jsx
-   *  <Dropdown style={{ padding: '10px' }}>
-   *    <Dropdown.Trigger style={{ border: '1px solid red' }}>
-   *      <>
-   *        <CustomComponent /> // CustomComponent получит проп isOpen
-   *        <button>Open Dropdown</button>
-   *      </>
-   *    </Dropdown.Trigger>
-   *    <Dropdown.Content style={{ border: '1px solid red' }}>
-   *      <div>...Какой-то контент...</div>
-   *    </Dropdown.Content>
-   *  </Dropdown>
-   *
-   *  // В CustomComponent:
-   *  const CustomComponent = () => {
-   *  const context = useContext(DropdownContext);
-   *  if (!context) {
-   *    // Обработка случая, когда контекст не доступен
-   *    throw new Error('CustomComponent должен использоваться внутри Dropdown');
-   *  }
-   *  const { isOpen } = context;
-   *
-   *  return <span>{isOpen ? 'открыт' : 'закрыт'}</span>;
-   * };
-   * ```
-   */
-  const childrenWithProps = React.Children.map(children, (child) => {
-    if (React.isValidElement<TWithIsOpenProp>(child)) {
-      return React.cloneElement(child, { isOpen });
-    }
-    return child;
-  });
-
   return (
     <DropdownContext.Provider value={{ isOpen, toggle }}>
       <div ref={ref} className={className} style={style}>
-        {childrenWithProps}
+        {children}
       </div>
     </DropdownContext.Provider>
   );
