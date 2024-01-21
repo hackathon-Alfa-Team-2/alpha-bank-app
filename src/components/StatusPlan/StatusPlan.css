@@ -1,0 +1,60 @@
+.statusPlan {
+  margin: 0;
+  position: absolute;
+  right: 28px;
+  top: 84px;
+  max-width: 288px;
+}
+
+.statusPlan__container {
+margin-bottom: 24px;
+}
+
+.statusPlan__container-select {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.statusPlan__label {
+  color: #0e0e0e;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.18px;
+}
+
+.statusPlan__flag {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.statusPlan__select {
+  text-align: center;
+}
+
+.statusPlan__option {
+  display: flex;
+  height: 20px;
+  padding: 6px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border-radius: 4px;
+}
+
+.statusPlan__option_type_work {
+  background: #2188fa;
+}
+
+.statusPlan__option_type_done {
+  background: #26C44D;
+}
+
+.statusPlan__option_type_cancel {
+  background: #898991;
+}
+
+.statusPlan__option_type_cancel_notWork {
+  background: #FA5431;
+}

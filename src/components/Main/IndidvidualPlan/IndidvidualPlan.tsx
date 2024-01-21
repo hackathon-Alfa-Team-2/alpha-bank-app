@@ -1,6 +1,7 @@
 import "./IndidvidualPlan.css";
 import ArrowRight from "../../../assets/arrowRight.svg";
-import AboutWorker from "../../AboutWorker/AboutWorker";
+import InputSearch from "../../InputSearch/InputSearch";
+import StatusPlan from "../../StatusPlan/StatusPlan";
 
 export default function IndidvidualPlan() {
   return (
@@ -18,13 +19,10 @@ export default function IndidvidualPlan() {
           className="worker__arrow"
           alt="иконка стрелки вправо"
         />
-         <h3 className="indidvidualPlan__adress">ИПР сотрудника</h3>
+        <h3 className="indidvidualPlan__adress">ИПР сотрудника</h3>
       </div>
-      <AboutWorker />
-      
-
-
-      
+      <InputSearch />
+      <StatusPlan />
     </div>
   );
 }
