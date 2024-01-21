@@ -1,8 +1,9 @@
 .indidvidualPlan {
-  margin: 0 auto;
+  margin: 0;
   padding: 28px 28px 0 24px;
   box-sizing: border-box;
   width: 100%;
+  position: relative;
 }
 
 .indidvidualPlan__container {
