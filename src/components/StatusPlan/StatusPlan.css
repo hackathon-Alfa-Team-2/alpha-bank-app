@@ -10,6 +10,10 @@
   margin-bottom: 24px;
 }
 
+.statusPlan__container:last-child {
+  margin-bottom: 0;
+}
+
 .statusPlan__container-select {
   margin-top: 8px;
   display: flex;
@@ -64,6 +68,7 @@
   color: #0404138C;
 }
 
+/* Доделать */
 .statusPlan__option_type_work {
   background: #2188fa;
 }

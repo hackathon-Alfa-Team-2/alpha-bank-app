@@ -2,6 +2,7 @@ import './IndidvidualPlan.css'
 import ArrowRight from '../../../assets/arrowRight.svg'
 import TextAreaPlan from '../../TextAreaPlan/TextAreaPlan'
 import StatusPlan from '../../StatusPlan/StatusPlan'
+import Plus from '../../../assets/plus.svg'
 
 export default function IndidvidualPlan() {
   return (
@@ -23,6 +24,15 @@ export default function IndidvidualPlan() {
       </div>
       <TextAreaPlan />
       <StatusPlan />
+      <h3 className='indidvidualPlan__tasks'>Задачи</h3>
+      <div className='indidvidualPlan__container-tasks'>
+        <img
+          src={Plus}
+          className='indidvidualPlan__img-tasks'
+          alt='иконка плюсика'
+        />
+        <p className='indidvidualPlan__add-task'>Добавить задачу</p>
+      </div>
     </div>
   )
 }
