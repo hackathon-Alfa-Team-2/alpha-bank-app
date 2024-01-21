@@ -1,0 +1,25 @@
+@font-face {
+  font-display: swap;
+  font-family: 'SF-Pro-Text';
+  font-weight: 500;
+  src: local(SF-Pro-Text),
+    url(./fonts/SF-Pro-Text-Regular.woff2) format(woff2),
+    url(./fonts/SF-Pro-Text-Regular.woff) format(woff);
+}
+
+@font-face {
+  font-family: 'SF-Pro-Text';
+  font-weight: 400;
+  src: local(SF-Pro-Text),
+    url(./fonts/SF-Pro-Text-Medium.woff2) format(woff2),
+    url(./fonts/SF-Pro-Text-Medium.woff) format(woff);
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Styrene-UI-Medium-Regular';
+  src: local(Styrene-UI-Medium-Regular),
+    url(./fonts/Styrene-UI-Medium-Regular.woff2)
+      format(woff2),
+    url(./fonts/Styrene-UI-Medium-Regular.woff) format(woff);
+}
