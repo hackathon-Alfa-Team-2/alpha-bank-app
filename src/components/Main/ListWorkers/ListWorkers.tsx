@@ -1,9 +1,5 @@
-import "./ListWorkers.css";
+import './ListWorkers.css'
 
 export default function ListWorkers() {
-  return (
-    <div className="listWorkers">
-      ListWorkers
-    </div>
-  );
+  return <div className='listWorkers'>ListWorkers</div>
 }

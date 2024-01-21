@@ -1,9 +1,5 @@
-import "./Profile.css";
+import './Profile.css'
 
 export default function Profile() {
-  return (
-    <div className="profile">
-      Profile
-    </div>
-  );
+  return <div className='profile'>Profile</div>
 }
