@@ -7,13 +7,12 @@
 }
 
 .statusPlan__container {
-margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .statusPlan__container-select {
   margin-top: 8px;
   display: flex;
-  justify-content: center;
 }
 
 .statusPlan__label {
@@ -23,7 +22,7 @@ margin-bottom: 24px;
   letter-spacing: -0.18px;
 }
 
-.statusPlan__flag {
+.statusPlan__img {
   width: 24px;
   height: 24px;
   margin-right: 8px;
@@ -31,6 +30,7 @@ margin-bottom: 24px;
 
 .statusPlan__select {
   text-align: center;
+  border: none;
 }
 
 .statusPlan__option {
@@ -43,12 +43,33 @@ margin-bottom: 24px;
   border-radius: 4px;
 }
 
+.statusPlan__text {
+  margin: 0;
+  color: #0e0e0e;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.14px;
+}
+
+.statusPlan__text_type_margin {
+  margin-top: 8px;
+}
+
+.statusPlan__label_color_gray {
+  color: #0404138C;
+}
+
+.statusPlan__select_color_gray {
+  color: #0404138C;
+}
+
 .statusPlan__option_type_work {
   background: #2188fa;
 }
 
 .statusPlan__option_type_done {
-  background: #26C44D;
+  background: #26c44d;
 }
 
 .statusPlan__option_type_cancel {
@@ -56,5 +77,5 @@ margin-bottom: 24px;
 }
 
 .statusPlan__option_type_cancel_notWork {
-  background: #FA5431;
+  background: #fa5431;
 }

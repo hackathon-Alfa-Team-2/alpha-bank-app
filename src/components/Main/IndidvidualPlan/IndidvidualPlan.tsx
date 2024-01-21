@@ -1,6 +1,6 @@
 import './IndidvidualPlan.css'
 import ArrowRight from '../../../assets/arrowRight.svg'
-import InputSearch from '../../InputSearch/InputSearch'
+import TextAreaPlan from '../../TextAreaPlan/TextAreaPlan'
 import StatusPlan from '../../StatusPlan/StatusPlan'
 
 export default function IndidvidualPlan() {
@@ -21,7 +21,7 @@ export default function IndidvidualPlan() {
         />
         <h3 className='indidvidualPlan__adress'>ИПР сотрудника</h3>
       </div>
-      <InputSearch />
+      <TextAreaPlan />
       <StatusPlan />
     </div>
   )
