@@ -5,12 +5,11 @@ import Worker from './Worker/Worker'
 import IndidvidualPlan from './IndidvidualPlan/IndidvidualPlan'
 import Profile from './Profile/Profile'
 import SetTask from './SetTask/SetTask'
-import Sidebar from './Sidebar/Sidebar'
+// import Layout from '../Layout/Layout'
 
 export default function Main() {
   return (
     <main className='main'>
-      <Sidebar />
       <Router>
         <Routes>
           <Route path='/list-of-workers' element={<ListWorkers />} />

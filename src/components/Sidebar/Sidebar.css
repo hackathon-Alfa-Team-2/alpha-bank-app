@@ -1,10 +1,9 @@
-.sidebar {
-  margin: 0 auto;
+/* .sidebar {
   padding: 0;
   box-sizing: border-box;
-  max-width: 212px;
-  width: 100%;
-}
+  grid-area: aside;
+  outline: 1px solid red;
+} */
 
 .sidebar__container {
   margin: 32px auto 40px;
@@ -42,9 +41,9 @@
   align-self: center;
 }
 
-.sidebar__menu {
+/* .sidebar__menu {
   margin-left: 28px;
-}
+} */
 
 .sidebar__button-menu {
   display: flex;

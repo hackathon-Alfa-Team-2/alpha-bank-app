@@ -1,8 +1,11 @@
 $black: #0e0e0e;
 $white: #ffffff;
 $red: #ef3124;
+$red-2: #e32a17;
 $green: #0cc44d;
 $blue: #2a77ef;
+$grey: #e7e8eb;
+$grey-2: #dcdde1;
 $light-grey: #f2f3f5;
 $dark-grey: #0404138c;
 $tetriary: #05081d61;
@@ -23,7 +26,7 @@ $text-tetriary: $quaternary;
 $text-quaternary: $quaternary;
 
 $state-success: $green;
-$hover-red: #e32a17;
+$hover-red: $red-2;
 $state-hover: $light-grey;
-$state-pressed: #e7e8eb;
-$state-pressed-2: #dcdde1;
+$state-pressed: $grey;
+$state-pressed-2: $grey-2;
