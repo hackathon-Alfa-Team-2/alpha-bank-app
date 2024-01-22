@@ -1,3 +1,5 @@
+import { employees } from '../../../utils/mockData/employees'
+import EmployeeTable from '../EmployeeTable/EmployeeTable'
 import './ListWorkers.css'
 
 export default function ListWorkers() {
@@ -28,7 +30,13 @@ export default function ListWorkers() {
       </div>
       <div className='listWorkers__container-checkbox'>
         <select id='status' className='listWorkers__checkbox'>
-          <option disabled selected hidden className='listWorkers__option'>
+          <option
+            disabled
+            selected
+            hidden
+            defaultValue='status'
+            className='listWorkers__option'
+          >
             Статус
           </option>
           <option value='В работе' className='listWorkers__option'>
@@ -51,6 +59,7 @@ export default function ListWorkers() {
           placeholder='Дедлайн ИПР'
         />
       </div>
+      <EmployeeTable employees={employees} />
       {/* Если сотрудник не найден, то: */}
       {/* <div>
         <img
