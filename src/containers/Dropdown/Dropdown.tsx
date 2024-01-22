@@ -1,6 +1,6 @@
 import { useState, useContext, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { TContentProps, TDropdownProps, TTriggerProps } from './Dropdown.type'
+import { TDropdownProps } from './Dropdown.type'
 import { DropdownContext } from './Dropdown.context'
 
 /**
@@ -53,7 +53,7 @@ const Dropdown = ({ children, className, style }: TDropdownProps) => {
 /**
  * Компонент Trigger для управления состоянием открытия/закрытия дропдауна.
  */
-const Trigger = ({ children, className, style }: TTriggerProps) => {
+const Trigger = ({ children, className, style }: TDropdownProps) => {
   const context = useContext(DropdownContext)
   if (!context) {
     throw new Error('Dropdown.Trigger должен использоваться внутри Dropdown')
@@ -69,7 +69,7 @@ const Trigger = ({ children, className, style }: TTriggerProps) => {
 /**
  * Компонент Content для отображения содержимого дропдауна.
  */
-const Content = ({ children, className, style }: TContentProps) => {
+const Content = ({ children, className, style }: TDropdownProps) => {
   const context = useContext(DropdownContext)
   if (!context) {
     throw new Error('Dropdown.Content должен использоваться внутри Dropdown')

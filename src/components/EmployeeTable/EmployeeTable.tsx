@@ -1,76 +1,22 @@
-import { ReactNode, useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import SortIcon from '../../assets/icons/SortIcon'
 import UnsortIcon from '../../assets/icons/UnsortIcon'
+import Tooltip from '../../containers/Tooltip/Tooltip'
 import convertDate from '../../utils/convertDate'
 import { EmployeeTableProps, SortOrder, SortField } from './EmployeeTable.type'
 
-type TTooltipProps = {
-  children: ReactNode
-  text: string
-}
-
-const Tooltip = ({ children, text }: TTooltipProps) => {
-  const [show, setShow] = useState(false)
-  const [hovering, setHovering] = useState(false)
-
-  useEffect(() => {
-    let timeoutId: string | number | NodeJS.Timeout | undefined
-    if (hovering) {
-      timeoutId = setTimeout(() => {
-        setShow(true)
-      }, 500) // Задержка в 500 мс
-    } else {
-      setShow(false)
-    }
-    return () => clearTimeout(timeoutId)
-  }, [hovering])
-
-  const variants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1 },
-  }
-
-  return (
-    <div
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => setHovering(false)}
-      style={{ position: 'relative', display: 'inline-block' }}
-    >
-      {children}
-      <AnimatePresence>
-        {show && (
-          <motion.div
-            initial='hidden'
-            animate='visible'
-            exit='hidden'
-            variants={variants}
-            transition={{ duration: 0.2 }}
-            style={{
-              position: 'absolute',
-              bottom: '100%',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              border: '1px solid #ddd',
-              borderRadius: '4px',
-              backgroundColor: 'white',
-              padding: '5px',
-              boxShadow: '0px 0px 10px rgba(0,0,0,0.1)',
-              zIndex: 100,
-            }}
-          >
-            {text}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
-
+/**
+ * Компонент EmployeeTable для отображения и сортировки списка сотрудников.
+ * @param employees - Массив с данными сотрудников.
+ */
 const EmployeeTable = ({ employees }: EmployeeTableProps) => {
   const [sortOrder, setSortOrder] = useState<SortOrder>('none')
   const [sortField, setSortField] = useState<SortField>('none')
 
+  /**
+   * Функция для управления сортировкой сотрудников.
+   * @param field - Поле для сортировки.
+   */
   const sortEmployees = (field: SortField) => {
     if (field === sortField) {
       setSortOrder((prevOrder) =>
@@ -82,6 +28,7 @@ const EmployeeTable = ({ employees }: EmployeeTableProps) => {
     }
   }
 
+  // Отсортированный массив сотрудников
   const sortedEmployees = [...employees].sort((a, b) => {
     if (sortOrder === 'none' || sortField === 'none') return 0
 
@@ -100,8 +47,13 @@ const EmployeeTable = ({ employees }: EmployeeTableProps) => {
     return 0
   })
 
+  /**
+   * Функция для генерации кнопки сортировки и всплывающей подсказки.
+   * @param field - Поле, по которому осуществляется сортировка.
+   * @returns Кнопка сортировки с иконкой и всплывающей подсказкой.
+   */
   const getSortButton = (field: SortField) => {
-    // Обновление текста подсказки
+    // Определение текста для всплывающей подсказки
     let toolTipText = 'Без сортировки'
     if (sortField === field && sortOrder !== 'none') {
       toolTipText =
@@ -114,7 +66,7 @@ const EmployeeTable = ({ employees }: EmployeeTableProps) => {
             : 'от старых к новым'
     }
 
-    // Выбор иконки
+    // Выбор иконки для кнопки сортировки
     const icon =
       sortField === field && sortOrder !== 'none' ? (
         <SortIcon position={sortOrder === 'asc' ? 'up' : 'down'} />
@@ -123,8 +75,24 @@ const EmployeeTable = ({ employees }: EmployeeTableProps) => {
       )
 
     return (
-      <Tooltip text={toolTipText}>
+      <Tooltip style={{ position: 'relative', display: 'inline-block' }}>
         <button onClick={() => sortEmployees(field)}>{icon}</button>
+        <Tooltip.Text
+          style={{
+            position: 'absolute',
+            bottom: '100%',
+            color: 'green',
+            transform: 'translateX(-50%)',
+            border: '1px solid #ddd',
+            borderRadius: '4px',
+            backgroundColor: 'white',
+            padding: '5px',
+            boxShadow: '0px 0px 10px rgba(0,0,0,0.1)',
+            zIndex: 100,
+          }}
+        >
+          {toolTipText}
+        </Tooltip.Text>
       </Tooltip>
     )
   }
