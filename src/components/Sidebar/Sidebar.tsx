@@ -1,9 +1,9 @@
 import './Sidebar.css'
-import Arrow from '../../../assets/arrow.left.svg'
-import IconPeople from '../../../assets/icon-people.svg'
-import IconIpr from '../../../assets/icon-IPR.svg'
-import IconCompatation from '../../../assets/icon-brain.svg'
-import IconTest from '../../../assets/icon-library.svg'
+import Arrow from '../../assets/arrow.left.svg'
+import IconPeople from '../../assets/icon-people.svg'
+import IconIpr from '../../assets/icon-IPR.svg'
+import IconCompatation from '../../assets/icon-brain.svg'
+import IconTest from '../../assets/icon-library.svg'
 
 export default function Sidebar() {
   const handleBack = () => {

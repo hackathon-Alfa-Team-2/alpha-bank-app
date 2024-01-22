@@ -69,21 +69,21 @@
 }
 
 .listWorkers__input {
-  color: #AAAAAA;
+  color: #aaaaaa;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.14px;
   width: 100%;
   border: none;
-  background-color: #F2F3F5;
+  background-color: #f2f3f5;
 }
 
 .listWorkers__container-checkbox {
   display: flex;
   margin-top: 32px;
   gap: 16px;
- }
+}
 
 .listWorkers__checkbox {
   padding: 10px 20px;
@@ -97,13 +97,10 @@
 
 /* доделать  */
 .listWorkers__img-no-worker {
-
 }
 
 .listWorkers__title-no-worker {
-
 }
 
 .listWorkers__subtitle-no-worker {
-
 }

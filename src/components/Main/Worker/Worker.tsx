@@ -35,6 +35,7 @@ export default function Worker() {
           «Создать ИПР»
         </p>
       </div>
+      <div></div>
     </div>
   )
 }
