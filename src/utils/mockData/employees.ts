@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { Employee } from '../../components/EmployeeTable/EmployeeTable.type'
+import { Employee } from '../../components/Main/EmployeeTable/EmployeeTable.type'
 import Filippov_Alexander_Romanovich from './employeesPics/Filippov_Alexander_Romanovich.png'
 import Ivanov_Peter_Alexandrovich from './employeesPics/Ivanov_Peter_Alexandrovich.png'
 import Ivanov_Sergey_Petrovich from './employeesPics/Ivanov_Sergey_Petrovich.png'

@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import SortIcon from '../../assets/icons/SortIcon'
-import UnsortIcon from '../../assets/icons/UnsortIcon'
-import Tooltip from '../../containers/Tooltip/Tooltip'
-import convertDate from '../../utils/convertDate'
+import cn from 'classnames'
+import SortIcon from '../../../assets/icons/SortIcon'
+import UnsortIcon from '../../../assets/icons/UnsortIcon'
+import Tooltip from '../../../containers/Tooltip/Tooltip'
+import convertDate from '../../../utils/convertDate'
 import { EmployeeTableProps, SortOrder, SortField } from './EmployeeTable.type'
+import styles from './EmployeeTable.module.scss'
 
 /**
  * Компонент EmployeeTable для отображения и сортировки списка сотрудников.
@@ -75,22 +77,11 @@ const EmployeeTable = ({ employees }: EmployeeTableProps) => {
       )
 
     return (
-      <Tooltip style={{ position: 'relative', display: 'inline-block' }}>
-        <button onClick={() => sortEmployees(field)}>{icon}</button>
-        <Tooltip.Text
-          style={{
-            position: 'absolute',
-            bottom: '100%',
-            color: 'green',
-            transform: 'translateX(-50%)',
-            border: '1px solid #ddd',
-            borderRadius: '4px',
-            backgroundColor: 'white',
-            padding: '5px',
-            boxShadow: '0px 0px 10px rgba(0,0,0,0.1)',
-            zIndex: 100,
-          }}
-        >
+      <Tooltip className={styles.tooltip}>
+        <button className={styles.sortBtn} onClick={() => sortEmployees(field)}>
+          {icon}
+        </button>
+        <Tooltip.Text className={styles.tooltipTextContainer}>
           {toolTipText}
         </Tooltip.Text>
       </Tooltip>
@@ -98,27 +89,53 @@ const EmployeeTable = ({ employees }: EmployeeTableProps) => {
   }
 
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
         <tr>
-          <th>Фио {getSortButton('fullName')}</th>
-          <th>Дедлайн {getSortButton('deadline')}</th>
-          <th>Статус</th>
+          <th className={cn(styles.tableHeader, styles.fullNameCell)}>
+            <div className={styles.tableHeaderSortContainer}>
+              Фио {getSortButton('fullName')}
+            </div>
+          </th>
+          <th className={cn(styles.tableHeader, styles.deadlineCell)}>
+            <div className={styles.tableHeaderSortContainer}>
+              Дедлайн {getSortButton('deadline')}
+            </div>
+          </th>
+          <th className={cn(styles.tableHeader, styles.statusCell)}>Статус</th>
         </tr>
       </thead>
       <tbody>
         {sortedEmployees.map((employee) => (
-          <tr key={employee.id}>
-            <td>
+          <tr key={employee.id} className={styles.tableRow}>
+            <td className={styles.infoCell}>
               <img
                 src={employee.avatar}
                 alt='avatar'
                 style={{ width: '50px', height: '50px' }}
               />
-              {employee.fullName} - {employee.position}
+              <div className={styles.infoCellTextContainer}>
+                <p className={styles.infoCellFullName}>{employee.fullName}</p>
+                <span className={styles.infoCellPosition}>
+                  {employee.position}
+                </span>
+              </div>
             </td>
-            <td>{employee.deadline}</td>
-            <td>{employee.status}</td>
+
+            <td>
+              <span className={styles.deadlineCell}>{employee.deadline}</span>
+            </td>
+            <td>
+              <div
+                className={cn(styles.statusCellBadge, {
+                  [styles.statusInWork]: employee.status === 'В работе',
+                  [styles.statusCompleted]: employee.status === 'Выполнен',
+                  [styles.statusCanceled]: employee.status === 'Отменён',
+                })}
+              >
+                {employee.status}
+              </div>
+            </td>
           </tr>
         ))}
       </tbody>
