@@ -1,3 +1,5 @@
+@import './../../styles/colors.scss';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -6,16 +8,19 @@
   box-sizing: border-box;
 }
 
-.wrapper {
+%wrapper {
   display: flex;
 }
 
-.logoSide {
-  gap: 38px;
-}
-
-.profileSide {
-  gap: 16px;
+.side {
+  &Logo {
+    gap: 38px;
+    @extend %wrapper;
+  }
+  &Profile {
+    gap: 16px;
+    @extend %wrapper;
+  }
 }
 
 .logo {
@@ -24,45 +29,12 @@
   cursor: pointer;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-}
-
-.list {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.item {
-  padding: 0;
-  margin: 0;
-}
-
-.link {
-  text-decoration: none;
-  color: #0e0e0e;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.16px;
-  transition: opacity 0.2s ease;
-}
-
-.link:hover {
-  opacity: 0.7;
-}
-
 .icon {
   width: 40px;
   height: 40px;
   border-radius: 48px;
   padding: 8px;
-  background-color: #f2f3f5;
+  background-color: $bg-secondary;
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -71,8 +43,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: #f2f3f5 url(./../../svg/bell.svg) center /
-    contain no-repeat;
+  background: url(./../../svg/bell.svg) center / contain no-repeat;
 }
 
 .profileImage {
