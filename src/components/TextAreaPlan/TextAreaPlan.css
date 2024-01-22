@@ -1,19 +1,25 @@
-.inputSearch {
+.textAreaPlan {
   margin: 32px 0;
   max-width: 600px;
 }
 
-.inputSearch__title {
+.textAreaPlan__title {
   margin: 0 0 20px;
-  align-self: stretch;
+  padding: 0;
   color: #aaaaaa;
   font-size: 32px;
   font-weight: 500;
   line-height: 40px;
+  border: none;
+  max-height: 40px;
+  box-sizing: border-box;
+
 }
 
-.inputSearch__input {
+.textAreaPlan__task {
+  box-sizing: border-box;
   padding: 16px 12px;
+  max-height: 56px;
   width: 100%;
   border: none;
   font-size: 16px;
@@ -22,4 +28,5 @@
   letter-spacing: 0.08px;
   border-radius: 8px;
   background: #F2F3F5;
+  color: #AAA;
 }
