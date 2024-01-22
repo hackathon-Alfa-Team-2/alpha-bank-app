@@ -1,5 +1,6 @@
 import styles from './Footer.module.scss'
 import iconUrl from '../../images/LogoIcon.svg'
+import { innerLinkTitles as titles } from './InnerLinks.tsx'
 
 export default function Footer() {
   const {
@@ -8,63 +9,54 @@ export default function Footer() {
     link,
     contacts,
     innerLinks,
+    outterLinks,
     socialLinks,
     list,
     item,
     icon,
     logoIcon,
     capture,
-    wrapper,
+    appLinks,
     grid,
-    flex,
     span,
+    button,
+    phone,
   } = styles
-  const innerLinkTitles = [
-    'Главная',
-    'Сервисы',
-    'Контакты',
-    'Подразделения',
-    'Всё о работе',
-    'Академия',
-    'SAP АХД',
-    'Заказ HR-услуг',
-    'Заказ IT-услуг',
-    'WSS Docs',
-    'Карьера в банке',
-    'Сайт Альфа Банка',
-  ]
+
   return (
     <footer className={footer}>
       <div className={links}>
         <nav className={innerLinks}>
           <ul className={`${list} ${grid}`}>
-            {innerLinkTitles.map((title) => (
+            {titles.map((title) => (
               <li key={title} className={item}>
-                {title}
+                <a href='_#' className={link}>
+                  {title}
+                </a>
               </li>
             ))}
           </ul>
         </nav>
-        <nav className={socialLinks}>
-          <div className={wrapper}>
+        <nav className={outterLinks}>
+          <div className={appLinks}>
             <img className={logoIcon} src={iconUrl} alt='icon' />
             <p className={capture}>
               Мобильное&nbsp;приложение{' '}
               <span className={span}>
                 Для{' '}
-                <a className={link} href='#'>
+                <a className={link} href='#' target='_blank'>
                   IOS
                 </a>{' '}
                 и{' '}
-                <a className={link} href='#'>
+                <a className={link} href='#' target='_blank'>
                   Android
                 </a>
               </span>
             </p>
           </div>
-          <ul className={`${list} ${flex}`}>
+          <ul className={`${list} ${socialLinks}`}>
             <li className={item}>
-              <a className={icon} href='#'>
+              <a className={icon} href='#' target='_blank'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -81,7 +73,7 @@ export default function Footer() {
               </a>
             </li>
             <li className={item}>
-              <a className={icon} href='#'>
+              <a className={icon} href='#' target='_blank'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -98,7 +90,7 @@ export default function Footer() {
               </a>
             </li>
             <li className={item}>
-              <a className={icon} href='#'>
+              <a className={icon} href='#' target='_blank'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -117,7 +109,19 @@ export default function Footer() {
           </ul>
         </nav>
       </div>
-      <div className={contacts}></div>
+      <div className={contacts}>
+        <ul className={list}>
+          <li className={item}>
+            <span className={phone}>011-1111 — Help | IT-поддержка</span>
+          </li>
+          <li className={item}>
+            <span className={phone}>013-3777 — Human Help | HR-поддержка</span>
+          </li>
+        </ul>
+        <button type='button' className={button}>
+          Помощь
+        </button>
+      </div>
     </footer>
   )
 }

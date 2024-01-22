@@ -3,10 +3,15 @@
 .footer {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 18px;
   padding: 56px 20px 18px;
   background-color: #fff;
   grid-area: footer;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45;
 }
 
 .links {
@@ -39,14 +44,10 @@
 
 .item {
   color: $text-primary;
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.45;
   width: max-content;
 }
 
-.socialLinks {
+.outterLinks {
   width: 184px;
   height: 96px;
   display: flex;
@@ -57,25 +58,19 @@
 .logoIcon {
   width: 36px;
   height: 36px;
-  object-fit: contain;
-  object-position: center;
 }
 
 .capture {
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.45;
   width: 132px;
   margin: 0;
 }
 
-.flex {
+.socialLinks {
   display: flex;
   gap: 12px;
 }
 
-.wrapper {
+.appLinks {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,6 +83,11 @@
 .link {
   text-decoration: none;
   color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.link:hover {
+  opacity: 0.7;
 }
 
 .icon {
@@ -98,4 +98,39 @@
   height: 36px;
   background-color: $bg-secondary;
   border-radius: 12px;
+  transition: opacity 0.2s ease;
+}
+
+.icon:hover {
+  opacity: 0.7;
+}
+
+.contacts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1016px;
+  min-height: 36px;
+  margin: 0 auto;
+}
+
+.phone {
+  color: $text-tetriary;
+}
+
+.button {
+  border: 0;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $bg-secondary;
+  border-radius: 8px;
+  color: $text-primary;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.button:hover {
+  opacity: 0.7;
 }
