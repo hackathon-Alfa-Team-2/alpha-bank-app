@@ -138,6 +138,7 @@
   width: 24px;
   height: 24px;
   margin: 0 8px;
+  cursor: pointer;
 }
 
 .indidvidualPlan__add-task {
@@ -146,4 +147,5 @@
   font-weight: 500;
   letter-spacing: -0.14px;
   color: #0404138c;
+  cursor: pointer;
 }

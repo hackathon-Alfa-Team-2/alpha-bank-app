@@ -44,7 +44,6 @@ export default function ListWorkers() {
             Отменен
           </option>
         </select>
-
         <input
           type='date'
           id='calendar'
@@ -52,6 +51,20 @@ export default function ListWorkers() {
           placeholder='Дедлайн ИПР'
         />
       </div>
+      {/* Если сотрудник не найден, то: */}
+      {/* <div>
+        <img
+          src={}
+          className='listWorkers__img-no-worker'
+          alt='иконка ничего не найдено'
+        />
+        <p className='listWorkers__title-no-worker'>
+          Такой сотрудник не найден
+        </p>
+        <p className='listWorkers__subtitle-no-worker'>
+          Попробуйте ввести по-другому
+        </p>
+      </div> */}
     </div>
   )
 }

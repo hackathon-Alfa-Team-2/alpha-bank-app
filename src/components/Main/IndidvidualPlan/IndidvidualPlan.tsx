@@ -3,18 +3,26 @@ import ArrowRight from '../../../assets/arrowRight.svg'
 import TextAreaPlan from '../../TextAreaPlan/TextAreaPlan'
 import StatusPlan from '../../StatusPlan/StatusPlan'
 import Plus from '../../../assets/plus.svg'
+import { Link } from 'react-router-dom'
 
 export default function IndidvidualPlan() {
   return (
     <div className='indidvidualPlan'>
       <div className='indidvidualPlan__container'>
-        <h3 className='indidvidualPlan__adress'>ИПР</h3>
+        <Link to={'/list-of-workers'} className='indidvidualPlan__adress'>
+          ИПР
+        </Link>
         <img
           src={ArrowRight}
           className='indidvidualPlan__arrow'
           alt='иконка стрелки вправо'
         />
-        <h3 className='indidvidualPlan__adress'>Сотрудники</h3>
+        <Link
+          to={'/list-of-workers/worker'}
+          className='indidvidualPlan__adress'
+        >
+          Сотрудники
+        </Link>
         <img
           src={ArrowRight}
           className='worker__arrow'

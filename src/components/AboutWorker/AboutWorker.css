@@ -46,6 +46,7 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.14px;
+  cursor: pointer;
 }
 
 .aboutWorker__button_display_none {
