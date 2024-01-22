@@ -47,16 +47,25 @@
 }
 
 .listWorkers__container-input {
-  display: flex;
-  flex-direction: column;
   width: 992px;
   height: 40px;
   padding: 8px 12px;
   gap: 8px;
   border-radius: 8px;
   background: #f2f3f5;
-  /* box-sizing: border-box; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.listWorkers__input-img {
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  background-image: url('../../../assets/Input.svg');
+  border: none;
+  background-position: center center;
+  background-size: contain;
 }
 
 .listWorkers__input {
@@ -67,20 +76,21 @@
   letter-spacing: -0.14px;
   width: 100%;
   border: none;
+  background-color: #F2F3F5;
 }
 
 .listWorkers__container-checkbox {
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
-}
+  margin-top: 32px;
+  gap: 16px;
+ }
 
 .listWorkers__checkbox {
-  display: flex;
   padding: 10px 20px;
-  align-items: center;
-  gap: 6px;
   border-radius: 48px;
   border: 1px solid #bbbcc1;
-  background: #fff;
+}
+
+.listWorkers__option {
+  margin: 0;
 }

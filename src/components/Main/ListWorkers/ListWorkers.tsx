@@ -1,5 +1,4 @@
 import './ListWorkers.css'
-import Input from '../../../assets/Input.svg'
 
 export default function ListWorkers() {
   return (
@@ -20,22 +19,38 @@ export default function ListWorkers() {
         </div>
       </div>
       <div className='listWorkers__container-input'>
-        <img src={Input} alt='иконка лупы' />
+        <button className='listWorkers__input-img' type='submit' />
         <input
           className='listWorkers__input'
           type='text'
-          // placeholder='Поиск по сотрудникам или должности'
+          placeholder='Поиск по сотрудникам или должности'
         />
-        <div className='listWorkers__container-checkbox'>
-          <label>
-            <input type='checkbox' className='listWorkers__checkbox' />
-            Статус{' '}
-          </label>
-          <label>
-            <input type='checkbox' className='listWorkers__checkbox' />
-            Дедлайн ИПР{' '}
-          </label>
-        </div>
+      </div>
+      <div className='listWorkers__container-checkbox'>
+        <select id='status' className='listWorkers__checkbox'>
+          <option disabled selected hidden className='listWorkers__option'>
+            Статус
+          </option>
+          <option value='В работе' className='listWorkers__option'>
+            В работе
+          </option>
+          <option value='Выполнен' className='listWorkers__option'>
+            Выполнен
+          </option>
+          <option value='Отменен' className='listWorkers__option'>
+            Не выполнен
+          </option>
+          <option value='Не выполнен' className='listWorkers__option'>
+            Отменен
+          </option>
+        </select>
+
+        <input
+          type='date'
+          id='calendar'
+          className='listWorkers__checkbox'
+          placeholder='Дедлайн ИПР'
+        />
       </div>
     </div>
   )
