@@ -2,12 +2,15 @@ import './Worker.css'
 import ArrowRight from '../../../assets/arrowRight.svg'
 import NoIpr from '../../../assets/iconNoIPR.svg'
 import AboutWorker from '../../AboutWorker/AboutWorker'
+import { Link } from 'react-router-dom'
 
 export default function Worker() {
   return (
     <div className='worker'>
       <div className='worker__container'>
-        <h3 className='worker__adress'>ИПР</h3>
+        <Link to={'/list-of-workers'} className='worker__adress'>
+          ИПР
+        </Link>
         <img
           src={ArrowRight}
           className='worker__arrow'
