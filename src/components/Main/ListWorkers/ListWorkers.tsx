@@ -1,6 +1,7 @@
 import { employees } from '../../../utils/mockData/employees'
 import EmployeeTable from '../EmployeeTable/EmployeeTable'
 import './ListWorkers.css'
+import NoWorker from '../../../assets/no-worker.svg'
 
 export default function ListWorkers() {
   return (
@@ -60,20 +61,23 @@ export default function ListWorkers() {
         />
       </div>
       <EmployeeTable employees={employees} />
-      {/* Если сотрудник не найден, то: */}
-      {/* <div>
-        <img
-          src={}
-          className='listWorkers__img-no-worker'
-          alt='иконка ничего не найдено'
-        />
+      {/* Если сотрудник не найден, то добавить класс display: flex*/}
+      <div className='listWorkers__container-no-worker'>
+        <div className='worker__wrapperImg-no-worker'>
+          <img
+            src={NoWorker}
+            className='listWorkers__img-no-worker'
+            alt='иконка ничего не найдено'
+          />
+        </div>
+
         <p className='listWorkers__title-no-worker'>
           Такой сотрудник не найден
         </p>
         <p className='listWorkers__subtitle-no-worker'>
           Попробуйте ввести по-другому
         </p>
-      </div> */}
+      </div>
     </div>
   )
 }

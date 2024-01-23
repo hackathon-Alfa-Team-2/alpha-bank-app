@@ -3,6 +3,7 @@
   padding: 28px 28px 0 24px;
   box-sizing: border-box;
   width: 100%;
+  position: relative;
 }
 
 .worker__container {
@@ -76,12 +77,14 @@
 }
 
 .worker__container-noIPR {
-  display: flex;
+  display: none;
   margin: 132px auto 0;
   width: 496px;
-  flex-direction: column;
-  align-items: center;
   gap: 16px;
+}
+
+.worker__container-noIPR_display_flex {
+  display: flex;
 }
 
 .worker__wrapperImg-noIPR {
@@ -100,11 +103,11 @@
 }
 
 .worker__title {
-margin: 0;
-text-align: center;
-font-size: 20px;
-font-weight: 500;
-line-height: 24px;
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .worker__subtitle {

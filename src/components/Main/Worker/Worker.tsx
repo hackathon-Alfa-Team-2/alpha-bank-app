@@ -3,6 +3,7 @@ import ArrowRight from '../../../assets/arrowRight.svg'
 import NoIpr from '../../../assets/iconNoIPR.svg'
 import AboutWorker from '../../AboutWorker/AboutWorker'
 import { Link } from 'react-router-dom'
+import Popup from '../../../components/Popup/Popup'
 
 export default function Worker() {
   return (
@@ -17,10 +18,11 @@ export default function Worker() {
           alt='иконка стрелки вправо'
         />
         <h3 className='worker__adress'>Сотрудники</h3>
+        <Popup />
+
       </div>
       <AboutWorker />
-
-      {/* Если нет ИПР, то: */}
+      {/* Если нет ИПР, то то добавить класс display: flex */}
       <div className='worker__container-noIPR'>
         <div className='worker__wrapperImg-noIPR'>
           <img
@@ -35,7 +37,6 @@ export default function Worker() {
           «Создать ИПР»
         </p>
       </div>
-      <div></div>
     </div>
   )
 }

@@ -1,0 +1,86 @@
+.statusPlan {
+  margin: 0;
+  position: absolute;
+  right: 28px;
+  top: 84px;
+  max-width: 288px;
+}
+
+.statusPlan__container {
+  margin-bottom: 24px;
+}
+
+.statusPlan__container:last-child {
+  margin-bottom: 0;
+}
+
+.statusPlan__container-select {
+  margin-top: 8px;
+  display: flex;
+}
+
+.statusPlan__label {
+  color: #0e0e0e;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.18px;
+}
+
+.statusPlan__img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.statusPlan__select {
+  text-align: center;
+  border: none;
+}
+
+.statusPlan__option {
+  display: flex;
+  height: 20px;
+  padding: 6px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border-radius: 4px;
+}
+
+.statusPlan__text {
+  margin: 0;
+  color: #0e0e0e;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.14px;
+}
+
+.statusPlan__text_type_margin {
+  margin-top: 8px;
+}
+
+.statusPlan__label_color_gray {
+  color: #0404138C;
+}
+
+.statusPlan__select_color_gray {
+  color: #0404138C;
+}
+
+/* Доделать */
+.statusPlan__option_type_work {
+  background: #2188fa;
+}
+
+.statusPlan__option_type_done {
+  background: #26c44d;
+}
+
+.statusPlan__option_type_cancel {
+  background: #898991;
+}
+
+.statusPlan__option_type_cancel_notWork {
+  background: #fa5431;
+}

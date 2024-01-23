@@ -95,12 +95,47 @@
   margin: 0;
 }
 
-/* доделать  */
+.listWorkers__container-no-worker {
+  display: none;
+  margin: 120px auto 0;
+  width: 496px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.listWorkers__container-no-worker_display_flex {
+  display: flex;
+}
+
+.worker__wrapperImg-no-worker {
+  display: flex;
+  padding: 12px;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(5, 11, 44, 0.18);
+  background: #F2F3F5;
+}
+
 .listWorkers__img-no-worker {
+  width: 32px;
+  height: 32px;
 }
 
 .listWorkers__title-no-worker {
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .listWorkers__subtitle-no-worker {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
 }
