@@ -19,7 +19,6 @@ export default function Worker() {
         />
         <h3 className='worker__adress'>Сотрудники</h3>
         <Popup />
-
       </div>
       <AboutWorker />
       {/* Если нет ИПР, то то добавить класс display: flex */}

@@ -1,4 +1,4 @@
-import './StatusPlan.css'
+import './statusPlan.css'
 import Flag from '../../assets/flag.svg'
 import Calendar from '../../assets/calendar.svg'
 import Person from '../../assets/person.svg'

@@ -2,6 +2,7 @@ import './Main.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Worker from './Worker/Worker'
 import IndidvidualPlan from './IndidvidualPlan/IndidvidualPlan'
+import NewIndidvidualPlan from './NewIndividualPlan/NewIndividualPlan'
 import Profile from './Profile/Profile'
 import SetTask from './SetTask/SetTask'
 import ListWorkers from './ListWorkers/ListWorkers'
@@ -16,6 +17,10 @@ export default function Main() {
           <Route
             path='/list-of-workers/worker/indidvidual-plan'
             element={<IndidvidualPlan />}
+          />
+          <Route
+            path='/list-of-workers/worker/indidvidual-plan/new-indidvidual-plan'
+            element={<NewIndidvidualPlan />}
           />
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/set-of-task' element={<SetTask />} />

@@ -68,19 +68,3 @@
   color: #0404138C;
 }
 
-/* Доделать */
-.statusPlan__option_type_work {
-  background: #2188fa;
-}
-
-.statusPlan__option_type_done {
-  background: #26c44d;
-}
-
-.statusPlan__option_type_cancel {
-  background: #898991;
-}
-
-.statusPlan__option_type_cancel_notWork {
-  background: #fa5431;
-}
