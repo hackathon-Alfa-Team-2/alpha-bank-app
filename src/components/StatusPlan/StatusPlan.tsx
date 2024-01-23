@@ -4,6 +4,7 @@ import Calendar from '../../assets/calendar.svg'
 import Person from '../../assets/person.svg'
 import Star from '../../assets/Star.svg'
 import StarGray from '../../assets/Star-gray.svg'
+import Buttons from '../../components/Buttons/Buttons'
 
 export default function StatusPlan() {
   return (
@@ -97,9 +98,7 @@ export default function StatusPlan() {
               1
             </option>
           </select>
-        </div>
-      </div>
-      <div className='statusPlan__container'>
+        </div>{' '}
         <label
           htmlFor='status'
           className='statusPlan__label statusPlan__label_color_gray'
@@ -130,6 +129,7 @@ export default function StatusPlan() {
           </select>
         </div>
       </div>
+      <Buttons />
     </div>
   )
 }

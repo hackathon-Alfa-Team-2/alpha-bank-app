@@ -1,11 +1,11 @@
-/* .sidebar {
+.sidebar {
+  display: flex;
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
   max-width: 212px;
   width: 100%;
-  min-height: 720px;
-} */
+}
 
 .sidebar__container {
   margin: 32px auto 40px;

@@ -4,14 +4,14 @@
   right: 28px;
   top: 84px;
   max-width: 288px;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .statusPlan__container {
-  margin-bottom: 24px;
-}
 
-.statusPlan__container:last-child {
-  margin-bottom: 0;
 }
 
 .statusPlan__container-select {
@@ -61,10 +61,9 @@
 }
 
 .statusPlan__label_color_gray {
-  color: #0404138C;
+  color: #0404138c;
 }
 
 .statusPlan__select_color_gray {
-  color: #0404138C;
+  color: #0404138c;
 }
-

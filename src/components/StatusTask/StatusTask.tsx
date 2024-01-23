@@ -1,6 +1,7 @@
 import './statusTask.css'
 import Flag from '../../assets/flag.svg'
 import Calendar from '../../assets/calendar.svg'
+import Buttons from '../Buttons/Buttons'
 
 export default function StatusTask() {
   return (
@@ -45,6 +46,7 @@ export default function StatusTask() {
           </select>
         </div>
       </div>
+      <Buttons />
     </div>
   )
 }
