@@ -1,10 +1,19 @@
-import { useState, useContext, useRef, useEffect, useCallback } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  useState,
+  useContext,
+  useRef,
+  useEffect,
+  useCallback,
+  ReactHTML,
+  ComponentType,
+} from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { TDropdownProps } from './Dropdown.type'
+import { TDropdownContentProps, TDropdownProps } from './Dropdown.type'
 import { DropdownContext } from './Dropdown.context'
 
 /**
- * Компонент Dropdown, предназначенный для создания выпадающего меню.
+ * Компонент Dropdown предназначен для создания выпадающего меню.
  * Поддерживает стилизацию через `style` и `className`.
  *
  * @example
@@ -19,15 +28,24 @@ import { DropdownContext } from './Dropdown.context'
  *   </Dropdown.Content>
  * </Dropdown>
  * ```
+ *
+ * @paramprops - Пропсы для компонента Dropdown.
+ * @param children - Дочерние элементы Dropdown.
+ * @param className - Дополнительные классы для стилизации компонента.
+ * @param style - Инлайн стили для компонента.
+ * @param  wrapperTag - Тип HTML-тега для обертки, по умолчанию 'div'.
  */
-const Dropdown = ({ children, className, style }: TDropdownProps) => {
+const Dropdown = ({
+  children,
+  className,
+  style,
+  wrapperTag: WrapperTag = 'div',
+  ...props
+}: TDropdownProps<keyof ReactHTML | ComponentType<any>>) => {
   const [isOpen, setIsOpen] = useState(false)
   const toggle = useCallback(() => setIsOpen((prev) => !prev), [])
   const ref = useRef<HTMLDivElement>(null)
 
-  /**
-   * Установка обработчика клика вне компонента для автоматического закрытия дропдауна.
-   */
   useEffect(() => {
     if (!isOpen) return
 
@@ -43,33 +61,45 @@ const Dropdown = ({ children, className, style }: TDropdownProps) => {
 
   return (
     <DropdownContext.Provider value={{ isOpen, toggle }}>
-      <div ref={ref} className={className} style={style}>
+      <WrapperTag ref={ref} className={className} style={style} {...props}>
         {children}
-      </div>
+      </WrapperTag>
     </DropdownContext.Provider>
   )
 }
 
 /**
- * Компонент Trigger для управления состоянием открытия/закрытия дропдауна.
+ * Компонент Trigger предназначен для управления состоянием открытия/закрытия дропдауна.
+ *
+ * @param props - Пропсы для компонента Trigger.
+ * @param children - Дочерние элементы Trigger.
+ * @param className - Дополнительные классы для стилизации компонента.
+ * @param style - Инлайн стили для компонента.
+ * @param wrapperTag - Тип HTML-тега для обертки, по умолчанию 'div'.
  */
-const Trigger = ({ children, className, style }: TDropdownProps) => {
+const Trigger = <T extends keyof ReactHTML | ComponentType<any>>({
+  children,
+  className,
+  style,
+  wrapperTag: WrapperTag = 'div',
+  ...props
+}: TDropdownProps<T>) => {
   const context = useContext(DropdownContext)
   if (!context) {
     throw new Error('Dropdown.Trigger должен использоваться внутри Dropdown')
   }
   const { toggle } = context
   return (
-    <div onClick={toggle} className={className} style={style}>
+    <WrapperTag onClick={toggle} className={className} style={style} {...props}>
       {children}
-    </div>
+    </WrapperTag>
   )
 }
 
 /**
  * Компонент Content для отображения содержимого дропдауна.
  */
-const Content = ({ children, className, style }: TDropdownProps) => {
+const Content = ({ children, className, style }: TDropdownContentProps) => {
   const context = useContext(DropdownContext)
   if (!context) {
     throw new Error('Dropdown.Content должен использоваться внутри Dropdown')

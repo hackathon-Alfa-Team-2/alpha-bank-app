@@ -1,18 +1,34 @@
-import { ReactNode } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactNode, HTMLAttributes, ComponentType, ReactHTML } from 'react'
 import { TStyledComponentProps } from '../../types'
 
 /**
- * Контекст для обмена состоянием между Dropdown и его дочерними компонентами.
+ * Тип для атрибутов HTML-элемента, который может быть использован как обобщение.
+ * Если переданный тип `T` является ключом `ReactHTML`, возвращает соответствующие атрибуты.
+ * Если тип `T` является компонентом, возвращает атрибуты его пропсов.
+ * В противном случае возвращает атрибуты HTML-элемента `T`.
  */
-export type TDropdownContextType = {
-  isOpen: boolean
-  toggle: () => void
-}
+export type CustomHTMLAttributes<T> = T extends keyof ReactHTML
+  ? React.HTMLAttributes<ReactHTML[T]>
+  : T extends ComponentType<infer P>
+    ? P
+    : HTMLAttributes<T>
 
 /**
- * Props для компонента Dropdown.
- * @param children - Дочерние элементы компонента.
+ * Тип для пропсов компонента Dropdown.
+ * Принимает обобщенный параметр `T`, который может быть ключом `ReactHTML` или компонентом.
+ * Включает в себя общие пропсы стилизации (`TStyledComponentProps`) и атрибуты элемента (`CustomHTMLAttributes`).
  */
-export type TDropdownProps = {
+export type TDropdownProps<T extends keyof ReactHTML | ComponentType<any>> = {
+  children: ReactNode
+  wrapperTag?: T
+} & TStyledComponentProps &
+  CustomHTMLAttributes<T>
+
+/**
+ * Тип для пропсов компонента Content в Dropdown.
+ * Включает в себя общие пропсы стилизации (`TStyledComponentProps`) и дочерние элементы.
+ */
+export type TDropdownContentProps = {
   children: ReactNode
 } & TStyledComponentProps
