@@ -10,14 +10,14 @@ export default function Worker() {
     <div className='worker'>
       <div className='worker__container'>
         <Link to={'/list-of-workers'} className='worker__adress'>
-          ИПР
+          Все ИПР
         </Link>
         <img
           src={ArrowRight}
           className='worker__arrow'
           alt='иконка стрелки вправо'
         />
-        <h3 className='worker__adress'>Сотрудники</h3>
+        <h3 className='worker__adress'>$ФИО</h3>
         <Popup />
       </div>
       <AboutWorker />

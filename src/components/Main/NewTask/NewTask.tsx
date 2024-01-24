@@ -1,49 +1,47 @@
-import './NewIndividualPlan.css'
+import './NewTask.css'
 import ArrowRight from '../../../assets/arrowRight.svg'
 import { Link } from 'react-router-dom'
 import StatusTask from '../../StatusTask/StatusTask'
+import Comments from '../../Comments/Comments'
 
-export default function NewIndividualPlan() {
+export default function NewTask() {
   return (
-    <div className='newIndividualPlan'>
-      <div className='newIndidvidualPlan__container'>
-        <Link to={'/list-of-workers'} className='newIndidvidualPlan__adress'>
-          ИПР
+    <div className='newTask'>
+      <div className='newTask__container'>
+        <Link to={'/list-of-workers'} className='newTask__adress'>
+          Все ИПР
         </Link>
         <img
           src={ArrowRight}
-          className='newIndidvidualPlan__arrow'
+          className='newTask__arrow'
           alt='иконка стрелки вправо'
         />
-        <Link
-          to={'/list-of-workers/worker'}
-          className='newIndidvidualPlan__adress'
-        >
-          Сотрудники
+        <Link to={'/list-of-workers/worker'} className='newTask__adress'>
+          $ФИО
         </Link>
         <img
           src={ArrowRight}
-          className='newIndidvidualPlan__arrow'
+          className='newTask__arrow'
           alt='иконка стрелки вправо'
         />
         <Link
           to={'/list-of-workers/worker/indidvidual-plan'}
-          className='newIndidvidualPlan__adress'
+          className='newTask__adress'
         >
-          ИПР сотрудника
+          Новый ИПР
         </Link>
         <img
           src={ArrowRight}
-          className='newIndidvidualPlan__arrow'
+          className='newTask__arrow'
           alt='иконка стрелки вправо'
         />
-        <h3 className='newIndidvidualPlan__adress'>Новый ИПР</h3>
+        <h3 className='newTask__adress'>Новая задача</h3>
       </div>
-      <div className='newIndidvidualPlan__textAreaPlan'>
-        <h3 className='newIndidvidualPlan__textAreaPlan-title'>
+      <div className='newTask__textAreaPlan'>
+        <h3 className='newTask__textAreaPlan-title'>
           Разработка единой системы метрик и KPI{' '}
         </h3>
-        <p className='newIndidvidualPlan__textAreaPlan-task'>
+        <p className='newTask__textAreaPlan-task'>
           1. Понимание целей бизнеса: Провести встречи с руководителями и
           ключевыми заинтересованными сторонами для полного понимания
           бизнес-целей. Идентифицировать ключевые факторы успеха, которые
@@ -58,6 +56,7 @@ export default function NewIndividualPlan() {
         </p>
       </div>
       <StatusTask />
+      <Comments />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-.newIndividualPlan {
+.newTask {
   margin: 0;
   padding: 28px 28px 0 24px;
   box-sizing: border-box;
@@ -6,12 +6,12 @@
   position: relative;
 }
 
-.newIndidvidualPlan__container {
+.newTask__container {
   display: flex;
   margin: 0;
 }
 
-.newIndidvidualPlan__adress {
+.newTask__adress {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
@@ -21,12 +21,12 @@
   color: #05081d61;
 }
 
-.newIndidvidualPlan__arrow {
+.newTask__arrow {
   width: 24px;
   height: 24px;
 }
 
-.newIndidvidualPlan__textAreaPlan {
+.newTask__textAreaPlan {
   display: flex;
   width: 600px;
   flex-direction: column;
@@ -34,7 +34,7 @@
   margin-top: 32px;
 }
 
-.newIndidvidualPlan__textAreaPlan-title {
+.newTask__textAreaPlan-title {
   margin: 0;
   font-size: 24px;
   font-weight: 500;
@@ -42,7 +42,7 @@
   color: #0e0e0e;
 }
 
-.newIndidvidualPlan__textAreaPlan-task {
+.newTask__textAreaPlan-task {
   margin: 0;
   padding: 16px 12px;
   border-radius: 8px;
