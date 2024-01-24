@@ -62,7 +62,7 @@ export default function ListWorkers() {
       </div>
       <EmployeeTable employees={employees} />
       {/* Если сотрудник не найден, то добавить класс display: flex*/}
-      <div className='listWorkers__container-no-worker'>
+      <div className='listWorkers__container-no-worker listWorkers__container-no-worker_display_flex'>
         <div className='worker__wrapperImg-no-worker'>
           <img
             src={NoWorker}

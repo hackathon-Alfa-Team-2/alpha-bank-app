@@ -22,7 +22,7 @@ export default function Worker() {
       </div>
       <AboutWorker />
       {/* Если нет ИПР, то то добавить класс display: flex */}
-      <div className='worker__container-noIPR'>
+      <div className='worker__container-noIPR worker__container-noIPR_display_flex'>
         <div className='worker__wrapperImg-noIPR'>
           <img
             src={NoIpr}
@@ -31,10 +31,7 @@ export default function Worker() {
           />
         </div>
         <h4 className='worker__title'>У сотрудника пока нет ИПР</h4>
-        <p className='worker__subtitle'>
-          Чтобы создать индивидуальный план развития сотрудника, нажмите
-          «Создать ИПР»
-        </p>
+        <button className='worker__button'>Создать ИПР +</button>
       </div>
     </div>
   )
