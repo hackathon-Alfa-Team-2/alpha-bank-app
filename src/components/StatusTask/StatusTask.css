@@ -1,0 +1,49 @@
+.statusTask {
+  margin: 0;
+  position: absolute;
+  right: 28px;
+  top: 84px;
+  max-width: 288px;
+  width: 100%;
+}
+
+.statusTask__container {
+  margin-bottom: 24px;
+}
+
+.statusTask__container:last-child {
+  margin-bottom: 0;
+}
+
+.statusTask__label {
+  color: #0e0e0e;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.18px;
+}
+
+.statusTask__container-select {
+  margin-top: 8px;
+  display: flex;
+}
+
+.statusTask__img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.statusTask__select {
+  text-align: center;
+  border: none;
+}
+
+.statusTask__option {
+  display: flex;
+  height: 20px;
+  padding: 6px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border-radius: 4px;
+}

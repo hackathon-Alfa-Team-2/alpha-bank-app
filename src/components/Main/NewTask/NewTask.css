@@ -1,0 +1,27 @@
+.newTask {
+  margin: 0;
+  padding: 28px 28px 0 24px;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+
+.newTask__container {
+  display: flex;
+  margin: 0;
+}
+
+.newTask__adress {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.14px;
+  text-decoration-line: underline;
+  color: #05081d61;
+}
+
+.newTask__arrow {
+  width: 24px;
+  height: 24px;
+}

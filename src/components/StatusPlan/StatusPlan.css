@@ -4,14 +4,10 @@
   right: 28px;
   top: 84px;
   max-width: 288px;
-}
-
-.statusPlan__container {
-  margin-bottom: 24px;
-}
-
-.statusPlan__container:last-child {
-  margin-bottom: 0;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .statusPlan__container-select {
@@ -56,31 +52,18 @@
   letter-spacing: -0.14px;
 }
 
+.statusPlan__container {
+  margin-top: 8px;
+}
+
 .statusPlan__text_type_margin {
   margin-top: 8px;
 }
 
 .statusPlan__label_color_gray {
-  color: #0404138C;
+  color: #0404138c;
 }
 
 .statusPlan__select_color_gray {
-  color: #0404138C;
-}
-
-/* Доделать */
-.statusPlan__option_type_work {
-  background: #2188fa;
-}
-
-.statusPlan__option_type_done {
-  background: #26c44d;
-}
-
-.statusPlan__option_type_cancel {
-  background: #898991;
-}
-
-.statusPlan__option_type_cancel_notWork {
-  background: #fa5431;
+  color: #0404138c;
 }
