@@ -14,6 +14,7 @@ export const employees: Employee[] = [
     position: 'JavaScript Разработчик',
     deadline: '10.01.2024',
     status: 'В работе',
+    content: 'Филиппов Александр Романович',
   },
   {
     id: nanoid(),
@@ -22,6 +23,7 @@ export const employees: Employee[] = [
     position: 'Аналитик',
     deadline: '23.12.2023',
     status: 'Выполнен',
+    content: 'Иванов Пётр Александрович',
   },
   {
     id: nanoid(),
@@ -30,6 +32,7 @@ export const employees: Employee[] = [
     position: 'UI/UX Дизайнер',
     deadline: '15.12.2023',
     status: 'Отменён',
+    content: 'Кукушкина Оксана Сергеевна',
   },
   {
     id: nanoid(),
@@ -38,6 +41,7 @@ export const employees: Employee[] = [
     position: 'Разработчик',
     deadline: '10.01.2024',
     status: 'В работе',
+    content: 'Иванов Сергей Петрович',
   },
   {
     id: nanoid(),
@@ -46,5 +50,6 @@ export const employees: Employee[] = [
     position: 'UI/UX Дизайнер',
     deadline: '01.06.2023',
     status: 'Выполнен',
+    content: 'Соколова Софья Николаевна',
   },
 ]

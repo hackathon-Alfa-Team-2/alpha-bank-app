@@ -59,6 +59,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
       field: ['fullName', 'avatar', 'position'],
       className: styles.fullNameCell,
       sortable: true,
+
       render: (employee: Employee) => (
         <div className={styles.infoCell}>
           {employee.avatar && (
@@ -72,6 +73,12 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
             <p className={styles.infoCellFullName}>{employee.fullName}</p>
             <span className={styles.infoCellPosition}>{employee.position}</span>
           </div>
+        </div>
+      ),
+      dropdownContent: (employee: Employee) => (
+        <div>
+          <p>{employee.content}</p>
+          {/* Добавьте сюда контент для других колонок, если необходимо */}
         </div>
       ),
     },
@@ -96,6 +103,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
       title: <span className={styles.tableHeaderSortContainer}>Статус</span>,
       field: ['status', 'deadline'],
       className: styles.statusCell,
+
       render: (data: any) => (
         <div
           className={cn(styles.statusCellBadge, {

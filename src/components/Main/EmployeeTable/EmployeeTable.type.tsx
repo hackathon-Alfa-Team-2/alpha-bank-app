@@ -14,6 +14,7 @@ export type Employee = {
   position: string
   deadline: string
   status: 'В работе' | 'Выполнен' | 'Отменён'
+  content: string
 }
 
 /**
