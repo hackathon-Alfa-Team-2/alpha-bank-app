@@ -27,7 +27,7 @@
   border-radius: 96px;
 }
 
-.comments__container-text {
+.comments__container-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -35,12 +35,25 @@
   width: 100%;
 }
 
+.comments__container-text {
+  display: flex;
+}
+
 .comments__name {
-  margin: 0;
+  margin: 0 12px 0 0;
   color: #0e0e0e;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: -0.16px;
+}
+
+.comments__time {
+  margin: 0;
+  color: #AAA;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.14px;
 }
 
 .comments__input {

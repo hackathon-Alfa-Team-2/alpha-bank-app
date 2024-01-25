@@ -11,8 +11,12 @@ export default function Comments() {
           className='comments__avatar'
           alt='Иконка аватара'
         />
-        <div className='comments__container-text'>
-          <p className='comments__name'>Мика Ратилайнен</p>
+        <div className='comments__container-wrapper'>
+          <div className='comments__container-text'>
+            <p className='comments__name'>Иванов Пётр</p>
+            <p className='comments__time'>3 часа назад</p>
+          </div>
+
           <input
             type='text'
             className='comments__input'

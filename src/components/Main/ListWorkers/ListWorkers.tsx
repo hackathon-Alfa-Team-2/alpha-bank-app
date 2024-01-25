@@ -30,12 +30,15 @@ export default function ListWorkers() {
         />
       </div>
       <div className='listWorkers__container-checkbox'>
-        <select id='status' className='listWorkers__checkbox'>
+        <select
+          defaultValue='status'
+          id='status'
+          className='listWorkers__checkbox'
+        >
           <option
             disabled
-            selected
             hidden
-            defaultValue='status'
+            value='status'
             className='listWorkers__option'
           >
             Статус
