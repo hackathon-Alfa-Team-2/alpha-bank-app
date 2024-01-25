@@ -29,14 +29,12 @@ export default function ListWorkers() {
         />
       </div>
       <div className='listWorkers__container-checkbox'>
-        <select id='status' className='listWorkers__checkbox'>
-          <option
-            disabled
-            selected
-            hidden
-            defaultValue='status'
-            className='listWorkers__option'
-          >
+        <select
+          id='status'
+          className='listWorkers__checkbox'
+          defaultValue='status'
+        >
+          <option disabled value='status' className='listWorkers__option'>
             Статус
           </option>
           <option value='В работе' className='listWorkers__option'>
@@ -52,6 +50,7 @@ export default function ListWorkers() {
             Отменен
           </option>
         </select>
+
         <input
           type='date'
           id='calendar'

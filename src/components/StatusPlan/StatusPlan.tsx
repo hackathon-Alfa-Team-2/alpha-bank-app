@@ -14,7 +14,11 @@ export default function StatusPlan() {
         </label>
         <div className='statusPlan__container-select'>
           <img src={Flag} className='statusPlan__img' alt='иконка флага' />
-          <select id='status' className='statusPlan__select'>
+          <select
+            id='status'
+            className='statusPlan__select'
+            defaultValue='status'
+          >
             <option
               value='В работе'
               className='statusPlan__option statusPlan__option_type_work'
@@ -53,7 +57,11 @@ export default function StatusPlan() {
             className='statusPlan__img'
             alt='иконка календаря'
           />
-          <select id='calendar' className='statusPlan__select'>
+          <select
+            id='calendar'
+            className='statusPlan__select'
+            defaultValue='calendar'
+          >
             <option value='В работе' className='statusPlan__option'>
               Выбрать дату
             </option>
@@ -80,7 +88,11 @@ export default function StatusPlan() {
         </p>
         <div className='statusPlan__container-select'>
           <img src={Star} className='statusPlan__img' alt='иконка звезды' />
-          <select id='calendar' className='statusPlan__select'>
+          <select
+            id='calendar'
+            className='statusPlan__select'
+            defaultValue='calendar'
+          >
             <option value='5' className='statusPlan__option'>
               5
             </option>
@@ -111,6 +123,7 @@ export default function StatusPlan() {
           <select
             id='calendar'
             className='statusPlan__select statusPlan__select_color_gray'
+            defaultValue='calendar'
           >
             <option value='5' className='statusPlan__option'>
               5
