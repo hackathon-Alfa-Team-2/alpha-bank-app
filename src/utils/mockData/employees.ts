@@ -1,12 +1,12 @@
 import { nanoid } from 'nanoid'
-import { Employee } from '../../components/Main/EmployeeTable/EmployeeTable.type'
+import { IEmployee } from '../../components/Table/EmployeesTable/EmployeesTable.types'
 import Filippov_Alexander_Romanovich from './employeesPics/Filippov_Alexander_Romanovich.png'
 import Ivanov_Peter_Alexandrovich from './employeesPics/Ivanov_Peter_Alexandrovich.png'
 import Ivanov_Sergey_Petrovich from './employeesPics/Ivanov_Sergey_Petrovich.png'
 import Kukushkina_Oksana_Sergeevna from './employeesPics/Kukushkina_Oksana_Sergeevna.png'
 import Sokolova_Sofya_Nikolaevna from './employeesPics/Sokolova_Sofya_Nikolaevna.png'
 
-export const employees: Employee[] = [
+export const employees: IEmployee[] = [
   {
     id: nanoid(),
     avatar: Filippov_Alexander_Romanovich,

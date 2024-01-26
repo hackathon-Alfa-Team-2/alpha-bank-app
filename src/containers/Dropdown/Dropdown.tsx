@@ -10,7 +10,7 @@ import {
   memo,
 } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { TDropdownContentProps, TDropdownProps } from './Dropdown.type'
+import { TDropdownContentProps, TDropdownProps } from './Dropdown.types'
 import { DropdownContext } from './Dropdown.context'
 
 /**

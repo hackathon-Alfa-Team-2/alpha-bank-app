@@ -1,14 +1,15 @@
-// EmployeeTable.jsx
-import React, { useState } from 'react'
-import Table, { Column } from './Table'
-import { EmployeeTableProps, Employee } from './EmployeeTable.type'
-import styles from './EmployeeTable.module.scss'
-import convertDate from '../../../utils/convertDate'
-import cn from 'classnames'
+import { useState } from 'react'
 import SortIcon from '../../../assets/icons/SortIcon'
 import UnsortIcon from '../../../assets/icons/UnsortIcon'
+import convertDate from '../../../utils/convertDate'
+import Table from '../Table'
+import styles from '../Table.module.scss'
+import { IColumns } from '../Table.types'
+import { IEmployee, IEmployeesTableProps } from './EmployeesTable.types'
+import { toggleStatusBadgeStyles } from '../Table.helpers'
+import { Status } from '../Table.types'
 
-const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
+const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | 'none'>('none')
   const [sortField, setSortField] = useState<string>('none')
 
@@ -42,11 +43,11 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
     return 0
   })
 
-  const columns: Column[] = [
+  const columns: IColumns[] = [
     {
       title: (
         <div
-          className={styles.tableHeaderSortContainer}
+          //className={styles.tableHeaderSortContainer}
           onClick={() => handleSort('fullName')}
         >
           ФИО
@@ -60,7 +61,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
       className: styles.fullNameCell,
       sortable: true,
 
-      render: (employee: Employee) => (
+      render: (employee: IEmployee) => (
         <div className={styles.infoCell}>
           {employee.avatar && (
             <img
@@ -75,17 +76,11 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
           </div>
         </div>
       ),
-      dropdownContent: (employee: Employee) => (
-        <div>
-          <p>{employee.content}</p>
-          {/* Добавьте сюда контент для других колонок, если необходимо */}
-        </div>
-      ),
     },
     {
       title: (
         <div
-          className={styles.tableHeaderSortContainer}
+          //className={styles.tableHeaderSortContainer}
           onClick={() => handleSort('deadline')}
         >
           Дедлайн
@@ -96,7 +91,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
         </div>
       ),
       field: ['deadline'],
-      className: styles.deadlineCell,
+      className: '',
       sortable: true,
     },
     {
@@ -104,15 +99,16 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
       field: ['status', 'deadline'],
       className: styles.statusCell,
 
-      render: (data: any) => (
+      render: (data: Status) => (
         <div
-          className={cn(styles.statusCellBadge, {
-            [styles.statusInWork]: data.status === 'В работе',
-            [styles.statusCompleted]: data.status === 'Выполнен',
-            [styles.statusCanceled]: data.status === 'Отменён',
+          className={toggleStatusBadgeStyles({
+            data: data,
+            container: styles.statusCellBadge,
+            statusInWork: styles.statusInWork,
+            statusCompleted: styles.statusCompleted,
+            statusCanceled: styles.statusCanceled,
           })}
         >
-          {data.deadline && <p>{data.deadline}</p>}
           {data.status}
         </div>
       ),
@@ -135,4 +131,4 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ employees }) => {
   )
 }
 
-export default EmployeeTable
+export default EmployeesTable

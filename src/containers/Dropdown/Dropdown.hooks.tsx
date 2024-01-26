@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { DropdownContext } from '../Dropdown.context'
+import { DropdownContext } from './Dropdown.context'
 
 /**
  * Хук для доступа к контексту Dropdown.

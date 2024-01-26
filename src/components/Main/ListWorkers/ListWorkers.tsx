@@ -1,6 +1,9 @@
 import { employees } from '../../../utils/mockData/employees'
-import EmployeeTable from '../EmployeeTable/EmployeeTable'
+import EmployeesTable from '../../Table/EmployeesTable/EmployeesTable'
 import './ListWorkers.css'
+
+import PlanTable from '../../Table/PlanTable/PlanTable'
+import { plans } from '../../../utils/mockData/plans'
 
 export default function ListWorkers() {
   return (
@@ -58,7 +61,8 @@ export default function ListWorkers() {
           placeholder='Дедлайн ИПР'
         />
       </div>
-      <EmployeeTable employees={employees} />
+      <EmployeesTable employees={employees} />
+      <PlanTable plan={plans} />
       {/* Если сотрудник не найден, то: */}
       {/* <div>
         <img

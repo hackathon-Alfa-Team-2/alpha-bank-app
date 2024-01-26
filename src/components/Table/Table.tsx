@@ -1,26 +1,15 @@
-import React from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
+import Dropdown from '../../containers/Dropdown/Dropdown'
+import {
+  IColumns,
+  ITableCellProps,
+  ITableHeaderCellProps,
+  ITableProps,
+} from './Table.types'
 import styles from './Table.module.scss'
-import Dropdown from '../../../containers/Dropdown/Dropdown'
 
-export interface Column {
-  title: JSX.Element
-  field: string | string[]
-  className: string
-  sortable?: boolean
-  render?: (data: any) => JSX.Element
-  headerRender?: (field: string) => JSX.Element
-  dropdownContent?: (item: any) => JSX.Element // Обновление типа для dropdownContent
-}
-
-interface TableProps {
-  data: any[]
-  columns: Column[]
-  onSort?: (field: string) => void
-}
-
-const renderCellContent = (column: Column, item: any) => {
+const renderCellContent = (column: IColumns, item: any) => {
   if (column.render) {
     return column.render(
       Array.isArray(column.field)
@@ -40,21 +29,8 @@ const renderCellContent = (column: Column, item: any) => {
   }
 }
 
-interface TableHeaderCellProps {
-  column: Column
-  onSort?: (field: string) => void
-}
-
-interface TableCellProps {
-  column: Column
-  item: any
-}
-
-const TableHeaderCell: React.FC<TableHeaderCellProps> = ({
-  column,
-  onSort,
-}) => (
-  <div key={nanoid()} className={cn(styles.tableHeaderCell, column.className)}>
+const TableHeaderCell = ({ column, onSort }: ITableHeaderCellProps) => (
+  <div key={nanoid()} className={cn(styles.headerCell, column.className)}>
     {column.title}
     {column.sortable && onSort && (
       <button onClick={() => onSort(column.field.toString())}>Sort</button>
@@ -63,26 +39,26 @@ const TableHeaderCell: React.FC<TableHeaderCellProps> = ({
   </div>
 )
 
-const TableCell: React.FC<TableCellProps> = ({ column, item }) => (
-  <div key={nanoid()} className={cn(styles.tableCell, column.className)}>
+const TableCell = ({ column, item }: ITableCellProps) => (
+  <div key={nanoid()} className={cn(styles.cell, column.className)}>
     {renderCellContent(column, item)}
   </div>
 )
 
-const Table = ({ data, columns, onSort }: TableProps) => (
-  <div className={styles.table}>
-    <div className={styles.tableHeader}>
+const Table = ({ data, columns, onSort }: ITableProps) => (
+  <div className={styles.container}>
+    <div className={styles.header}>
       {columns.map((column) => (
         <TableHeaderCell key={nanoid()} column={column} onSort={onSort} />
       ))}
     </div>
     <div className={styles.tableBody}>
       {data.map((item) => (
-        <div key={nanoid()} className={styles.tableRow}>
+        <div key={nanoid()} className={styles.row}>
           {columns.some((column) => column.dropdownContent) ? (
-            <Dropdown key={nanoid()} className={styles.dropdown}>
+            <Dropdown key={nanoid()} className={styles.cell}>
               <Dropdown.Trigger>
-                <div className={styles.tableRowTrigger}>
+                <div className={styles.rowTrigger}>
                   {columns.map((column) => (
                     <TableCell key={nanoid()} column={column} item={item} />
                   ))}
@@ -93,7 +69,7 @@ const Table = ({ data, columns, onSort }: TableProps) => (
               </Dropdown.Content>
             </Dropdown>
           ) : (
-            <div className={styles.tableRowContent}>
+            <div className={styles.rowContent}>
               {columns.map((column) => (
                 <TableCell key={nanoid()} column={column} item={item} />
               ))}
