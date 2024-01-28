@@ -10,7 +10,7 @@ export default function IndidvidualPlan() {
     <div className='indidvidualPlan'>
       <div className='indidvidualPlan__container'>
         <Link to={'/list-of-workers'} className='indidvidualPlan__adress'>
-          ИПР
+          Все ИПР
         </Link>
         <img
           src={ArrowRight}
@@ -21,14 +21,14 @@ export default function IndidvidualPlan() {
           to={'/list-of-workers/worker'}
           className='indidvidualPlan__adress'
         >
-          Сотрудники
+          $ФИО
         </Link>
         <img
           src={ArrowRight}
           className='worker__arrow'
           alt='иконка стрелки вправо'
         />
-        <h3 className='indidvidualPlan__adress'>ИПР сотрудника</h3>
+        <h3 className='indidvidualPlan__adress'>Новый ИПР</h3>
       </div>
       <TextAreaPlan />
       <StatusPlan />
@@ -41,6 +41,7 @@ export default function IndidvidualPlan() {
         />
         <p className='indidvidualPlan__add-task'>Добавить задачу</p>
       </div>
+      <StatusPlan />
     </div>
   )
 }

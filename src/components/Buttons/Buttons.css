@@ -1,0 +1,40 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.buttons__button {
+  display: flex;
+  height: 40px;
+  padding: 8px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons__button_type_black {
+  background: #0e0e0e;
+}
+
+.buttons__button_type_white {
+  border: 1px solid #0e0e0e;
+  background: #fff;
+}
+
+.buttons__text {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.14px;
+}
+
+.buttons__text_type_white {
+  color: #0E0E0E;
+}
