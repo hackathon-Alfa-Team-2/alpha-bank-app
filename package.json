@@ -12,6 +12,7 @@
     "prettier": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\""
   },
   "dependencies": {
+    "@alfalab/core-components-comment": "^2.3.3",
     "framer-motion": "^10.18.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

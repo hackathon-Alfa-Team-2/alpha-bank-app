@@ -1,0 +1,47 @@
+@import '../../styles/colors.scss';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  gap: 12px;
+  // outline: 1px solid red;
+}
+
+.content {
+  // outline: 1px solid blue;
+  width: 100%;
+}
+
+.commentText {
+  background-color: $bg-secondary;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 12px;
+  margin: 8px 0 0 0;
+  border-radius: 8px;
+}
+
+.userName {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.16px;
+  margin: 0;
+}
+
+.dateTime {
+  color: #aaa;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.14px;
+  margin-left: 12px;
+}
+
+.image {
+  width: 44px;
+  height: 44px;
+}
