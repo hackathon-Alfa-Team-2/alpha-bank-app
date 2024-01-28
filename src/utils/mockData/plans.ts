@@ -12,7 +12,7 @@ export const plans: IPlans[] = [
         id: nanoid(),
         title: 'Установление процессов предварительной обработки данных',
         deadline: '10.01.2024',
-        status: 'В работе',
+        status: 'Отменён',
       },
       {
         id: nanoid(),
@@ -24,13 +24,13 @@ export const plans: IPlans[] = [
         id: nanoid(),
         title: 'Разработка стандартов и методологий анализа данных',
         deadline: '10.01.2024',
-        status: 'В работе',
+        status: 'Выполнен',
       },
       {
         id: nanoid(),
         title: 'Стандартизация аналитических отчетов и дашбордов',
         deadline: '10.01.2024',
-        status: 'В работе',
+        status: 'Выполнен',
       },
     ],
   },
@@ -67,3 +67,5 @@ export const plans: IPlans[] = [
     ],
   },
 ]
+
+//export const plans: IPlans[] = []

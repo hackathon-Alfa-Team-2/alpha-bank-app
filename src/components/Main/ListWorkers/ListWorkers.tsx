@@ -3,8 +3,7 @@ import EmployeesTable from '../../Table/EmployeesTable/EmployeesTable'
 import './ListWorkers.css'
 import NoWorker from '../../../assets/no-worker.svg'
 import { useState } from 'react'
-import PlanTable from '../../Table/PlanTable/PlanTable'
-import { plans } from '../../../utils/mockData/plans'
+
 // массив удалить
 const worker = [
   {
@@ -107,7 +106,6 @@ export default function ListWorkers() {
         />
       </div>
       <EmployeesTable employees={employees} />
-      <PlanTable plan={plans} />
 
       {/* Это просто отображение что бы проверить как работает поиск, УДАЛИТЬ!!! */}
       <ul>

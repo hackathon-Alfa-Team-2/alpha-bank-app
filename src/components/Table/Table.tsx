@@ -46,13 +46,13 @@ const TableCell = ({ column, item }: ITableCellProps) => (
 )
 
 const Table = ({ data, columns, onSort }: ITableProps) => (
-  <div className={styles.container}>
+  <div>
     <div className={styles.header}>
       {columns.map((column) => (
         <TableHeaderCell key={nanoid()} column={column} onSort={onSort} />
       ))}
     </div>
-    <div className={styles.tableBody}>
+    <div>
       {data.map((item) => (
         <div key={nanoid()} className={styles.row}>
           {columns.some((column) => column.dropdownContent) ? (

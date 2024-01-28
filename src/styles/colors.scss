@@ -1,15 +1,22 @@
+@function getColorWithAlpha($color, $alpha) {
+  @return rgba($color, $alpha);
+}
+
 $black: #0e0e0e;
 $white: #ffffff;
 $red: #ef3124;
 $red-2: #e32a17;
 $green: #0cc44d;
+$green-2: #26c44d;
 $blue: #2a77ef;
+$blue-2: #2188fa;
 $grey: #e7e8eb;
 $grey-2: #dcdde1;
+$grey-3: #898991;
 $light-grey: #f2f3f5;
-$dark-grey: #0404138c;
-$tetriary: #05081d61;
-$quaternary: #050b2c2e;
+$dark-grey: getColorWithAlpha(#040413, 55%);
+$tetriary: getColorWithAlpha(#05081d, 38%);
+$quaternary: getColorWithAlpha(#050b2c, 18%);
 
 $accent-primary: $red;
 $accent-secondary: $black;
@@ -30,3 +37,7 @@ $hover-red: $red-2;
 $state-hover: $light-grey;
 $state-pressed: $grey;
 $state-pressed-2: $grey-2;
+
+$status-grey: $grey-3;
+$status-blue: $blue-2;
+$status-green: $green-2;

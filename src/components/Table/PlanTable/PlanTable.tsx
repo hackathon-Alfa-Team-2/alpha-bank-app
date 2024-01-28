@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid'
+import cn from 'classnames'
 import Table from '../Table'
 import { toggleStatusBadgeStyles } from '../Table.helpers'
 import { IColumns, Status } from '../Table.types'
@@ -16,16 +17,31 @@ const PlanTable = ({ plan }: IPlanTableProps) => {
       field: ['title'],
       className: '',
       render: (data: any) => (
-        <span className={styles.infoCellPosition}>{data.title}</span>
+        <span className={styles.infoCell}>{data.title}</span>
       ),
       dropdownContent: (data: IPlans) => (
         <div>
           {data.tasks &&
             data.tasks.map((task) => (
-              <div key={nanoid()}>
-                <p>{task.title}</p>
-                <p>{task.deadline}</p>
-                <p>{task.status}</p>
+              <div
+                key={nanoid()}
+                className={cn(styles.rowContent, styles.dropdownContentRow)}
+              >
+                <span className={styles.dropdownContentText}>{task.title}</span>
+                <span className={styles.dropdownContentText}>
+                  {task.deadline}
+                </span>
+                <span
+                  className={toggleStatusBadgeStyles({
+                    data: task,
+                    container: styles.statusBadge,
+                    statusInWork: styles.statusInWorkSecondary,
+                    statusCompleted: styles.statusCompletedSecondary,
+                    statusCanceled: styles.statusCanceledSecondary,
+                  })}
+                >
+                  {task.status}
+                </span>
               </div>
             ))}
         </div>
@@ -44,10 +60,10 @@ const PlanTable = ({ plan }: IPlanTableProps) => {
         <div
           className={toggleStatusBadgeStyles({
             data: data,
-            container: styles.statusCellBadge,
-            statusInWork: styles.statusInWork,
-            statusCompleted: styles.statusCompleted,
-            statusCanceled: styles.statusCanceled,
+            container: styles.statusBadge,
+            statusInWork: styles.statusInWorkPrimary,
+            statusCompleted: styles.statusCompletedPrimary,
+            statusCanceled: styles.statusCanceledPrimary,
           })}
         >
           {data.status}

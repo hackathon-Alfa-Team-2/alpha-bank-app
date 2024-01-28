@@ -47,7 +47,7 @@ const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
     {
       title: (
         <div
-          //className={styles.tableHeaderSortContainer}
+          className={styles.headerSort}
           onClick={() => handleSort('fullName')}
         >
           ФИО
@@ -70,9 +70,9 @@ const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
               style={{ width: '50px', height: '50px' }}
             />
           )}
-          <div className={styles.infoCellTextContainer}>
-            <p className={styles.infoCellFullName}>{employee.fullName}</p>
-            <span className={styles.infoCellPosition}>{employee.position}</span>
+          <div className={styles.infoCellContainer}>
+            <p className={styles.infoCellTitle}>{employee.fullName}</p>
+            <span className={styles.infoCellSubtitle}>{employee.position}</span>
           </div>
         </div>
       ),
@@ -80,7 +80,7 @@ const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
     {
       title: (
         <div
-          //className={styles.tableHeaderSortContainer}
+          className={styles.headerSort}
           onClick={() => handleSort('deadline')}
         >
           Дедлайн
@@ -95,18 +95,18 @@ const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
       sortable: true,
     },
     {
-      title: <span className={styles.tableHeaderSortContainer}>Статус</span>,
+      title: <span className={styles.headerCell}>Статус</span>,
       field: ['status', 'deadline'],
-      className: styles.statusCell,
+      className: '',
 
       render: (data: Status) => (
         <div
           className={toggleStatusBadgeStyles({
             data: data,
-            container: styles.statusCellBadge,
-            statusInWork: styles.statusInWork,
-            statusCompleted: styles.statusCompleted,
-            statusCanceled: styles.statusCanceled,
+            container: styles.statusBadge,
+            statusInWork: styles.statusInWorkPrimary,
+            statusCompleted: styles.statusCompletedPrimary,
+            statusCanceled: styles.statusCanceledPrimary,
           })}
         >
           {data.status}

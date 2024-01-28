@@ -1,14 +1,14 @@
-export interface ITasks {
+import { Status } from '../Table.types'
+
+export interface ITasks extends Status {
   id: string
   title: string
   deadline: string
-  status: string
 }
 
-export interface IPlans {
+export interface IPlans extends Status {
   id: string
   title: string
   deadline: string
-  status: string
   tasks: ITasks[]
 }
