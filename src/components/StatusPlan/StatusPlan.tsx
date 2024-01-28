@@ -10,12 +10,21 @@ export default function StatusPlan() {
   return (
     <div className='statusPlan'>
       <div>
-        <label htmlFor='status' className='statusPlan__label'>
-          Статус ИПР
-        </label>
         <div className='statusPlan__container-select'>
           <img src={Flag} className='statusPlan__img' alt='иконка флага' />
-          <select id='status' className='statusPlan__select'>
+          <select
+            id='status'
+            defaultValue='select-status'
+            className='statusPlan__select'
+          >
+            <option
+              disabled
+              hidden
+              value='select-status'
+              className='statusPlan__option statusPlan__option_type_work'
+            >
+              Выберите статус
+            </option>
             <option
               value='В работе'
               className='statusPlan__option statusPlan__option_type_work'
@@ -43,11 +52,7 @@ export default function StatusPlan() {
           </select>
         </div>
       </div>
-
       <div>
-        <label htmlFor='status' className='statusPlan__label'>
-          Дедлайн
-        </label>
         <div className='statusPlan__container-select'>
           <img
             src={Calendar}
@@ -61,79 +66,92 @@ export default function StatusPlan() {
           </select>
         </div>
       </div>
-
-      <div>
-        <label htmlFor='status' className='statusPlan__label'>
-          Руководитель
-        </label>
-        <div className='statusPlan__container-select'>
-          <img src={Person} className='statusPlan__img' alt='иконка силуета' />
-          <h3 className='statusPlan__text'>Мика Ратилайнен</h3>
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor='status' className='statusPlan__label'>
-          Оценка ИПР
-        </label>
-        <p className='statusPlan__text statusPlan__text_type_margin'>
-          Предварительная:
-        </p>
-        <div className='statusPlan__container-select'>
-          <img src={Star} className='statusPlan__img' alt='иконка звезды' />
-          <select id='calendar' className='statusPlan__select'>
-            <option value='5' className='statusPlan__option'>
-              5
-            </option>
-            <option value='4' className='statusPlan__option'>
-              4
-            </option>
-            <option value='3' className='statusPlan__option'>
-              3
-            </option>
-            <option value='2' className='statusPlan__option'>
-              2
-            </option>
-            <option value='1' className='statusPlan__option'>
-              1
-            </option>
-          </select>
-        </div>{' '}
-        <div className='statusPlan__container'>
-          <label
-            htmlFor='status'
-            className='statusPlan__label statusPlan__label_color_gray'
+      <div className='statusPlan__container-select'>
+        <img src={Person} className='statusPlan__img' alt='иконка силуета' />
+        <select
+          id='status'
+          defaultValue='choise-boss'
+          className='statusPlan__select'
+        >
+          <option
+            disabled
+            hidden
+            value='choise-boss'
+            className='statusPlan__option statusPlan__option_type_work'
           >
-            Итоговая:
-          </label>
-          <div className='statusPlan__container-select'>
-            <img
-              src={StarGray}
-              className='statusPlan__img'
-              alt='иконка звезды'
-            />
-            <select
-              id='calendar'
-              className='statusPlan__select statusPlan__select_color_gray'
-            >
-              <option value='5' className='statusPlan__option'>
-                5
-              </option>
-              <option value='4' className='statusPlan__option'>
-                4
-              </option>
-              <option value='3' className='statusPlan__option'>
-                3
-              </option>
-              <option value='2' className='statusPlan__option'>
-                2
-              </option>
-              <option value='1' className='statusPlan__option'>
-                1
-              </option>
-            </select>
-          </div>
-        </div>
+            Выберите проверяющего
+          </option>
+          <option
+            value='В работе'
+            className='statusPlan__option statusPlan__option_type_work'
+          >
+            Мика Ратилайнен
+          </option>
+        </select>
+      </div>
+      <div className='statusPlan__container-select'>
+        <img src={Star} className='statusPlan__img' alt='иконка звезды' />
+        <select
+          id='calendar'
+          defaultValue='previous-mark'
+          className='statusPlan__select'
+        >
+          <option
+            disabled
+            hidden
+            value='previous-mark'
+            className='statusPlan__option'
+          >
+            Предварительная оценка
+          </option>
+          <option value='5' className='statusPlan__option'>
+            5
+          </option>
+          <option value='4' className='statusPlan__option'>
+            4
+          </option>
+          <option value='3' className='statusPlan__option'>
+            3
+          </option>
+          <option value='2' className='statusPlan__option'>
+            2
+          </option>
+          <option value='1' className='statusPlan__option'>
+            1
+          </option>
+        </select>
+      </div>{' '}
+      <div className='statusPlan__container-select'>
+        <img src={StarGray} className='statusPlan__img' alt='иконка звезды' />
+        <select
+          defaultValue='finish-mark'
+          id='calendar'
+          className='statusPlan__select statusPlan__select_color_gray'
+        >
+          <option
+            disabled
+            hidden
+            value='finish-mark'
+            className='statusPlan__option'
+          >
+            Итоговая оценка
+          </option>
+          <option value='5' className='statusPlan__option'>
+            5
+          </option>
+          <option value='4' className='statusPlan__option'>
+            4
+          </option>
+          <option value='3' className='statusPlan__option'>
+            3
+          </option>
+          <option value='2' className='statusPlan__option'>
+            2
+          </option>
+          <option value='1' className='statusPlan__option'>
+            1
+          </option>
+        </select>
       </div>
       <Buttons />
     </div>

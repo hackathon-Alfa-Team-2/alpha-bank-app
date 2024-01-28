@@ -6,13 +6,22 @@ import Buttons from '../Buttons/Buttons'
 export default function StatusTask() {
   return (
     <div className='statusTask'>
-      <div className='statusTask__container'>
-        <label htmlFor='status' className='statusTask__label'>
-          Статус задачи
-        </label>
+      <div>
         <div className='statusTask__container-select'>
           <img src={Flag} className='statusTask__img' alt='иконка флага' />
-          <select id='status' className='statusTask__select'>
+          <select
+            defaultValue='in-work'
+            id='status'
+            className='statusTask__select'
+          >
+            <option
+              disabled
+              hidden
+              value='in-work'
+              className='statusTask__option'
+            >
+              Выберите статус
+            </option>
             <option value='В работе' className='statusTask__option'>
               В работе
             </option>
@@ -30,9 +39,6 @@ export default function StatusTask() {
       </div>
 
       <div className='statusTask__container'>
-        <label htmlFor='status' className='statusPlan__label'>
-          Дедлайн
-        </label>
         <div className='statusTask__container-select'>
           <img
             src={Calendar}
@@ -41,7 +47,7 @@ export default function StatusTask() {
           />
           <select id='calendar' className='statusTask__select'>
             <option value='В работе' className='statusTask__option'>
-              Выбрать дату
+              Выберите дедлайн
             </option>
           </select>
         </div>
