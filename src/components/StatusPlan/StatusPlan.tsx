@@ -1,10 +1,10 @@
-import './statusPlan.css'
 import Flag from '../../assets/flag.svg'
 import Calendar from '../../assets/calendar.svg'
 import Person from '../../assets/person.svg'
 import Star from '../../assets/Star.svg'
 import StarGray from '../../assets/Star-gray.svg'
 import Buttons from '../../components/Buttons/Buttons'
+import './StatusPlan.css'
 
 export default function StatusPlan() {
   return (
