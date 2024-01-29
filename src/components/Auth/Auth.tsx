@@ -1,12 +1,12 @@
 // Auth.tsx
 import { useState } from 'react'
-import { useAuth } from './useAuth'
+import { useAuth } from './Auth.hooks'
 
 export const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const { login, isLoading, isError } = useAuth()
+  const { login, isLoading, error } = useAuth()
 
   const handleLogin = async () => {
     login(email, password)
@@ -34,7 +34,7 @@ export const Auth = () => {
       <button onClick={handleLogin} disabled={isLoading}>
         {isLoading ? 'Logging in...' : 'Login'}
       </button>
-      {isError && <div style={{ color: 'red' }}>Ошибка входа.</div>}
+      {error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   )
 }

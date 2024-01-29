@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { TStyledComponentProps } from '../types'
+import { TStyledComponentProps } from '../../types'
 
 /**
  * Интерфейс контекста для Tooltip.

@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // AuthProvider.tsx
 import { createContext, ReactNode, useEffect, useState } from 'react'
-import { useLoginMutation } from './authApi'
+import { useLoginMutation } from './Auth.api'
 
 interface AuthContextProps {
   isAuthenticated: boolean
   login: (email: string, password: string) => void
   isLoading: boolean
-  isError: boolean
+  error: string | null
 }
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
@@ -18,10 +19,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [isAuthenticated, setAuthenticated] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isError, setIsError] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null) // Инициализируем ошибку значением null
   const [loginMutation] = useLoginMutation()
 
   useEffect(() => {
+    // Проверяем наличие токена в localStorage при инициализации
     const storedToken = localStorage.getItem('access_token')
     if (storedToken) {
       setAuthenticated(true)
@@ -37,21 +39,23 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         const authToken: string | undefined = response.auth_token as string
 
         if (typeof authToken === 'string') {
+          // Устанавливаем флаг аутентификации
           setAuthenticated(true)
 
+          // Сохраняем токен в localStorage
           localStorage.setItem('access_token', authToken)
 
           console.log('Login successful', authToken)
         } else {
-          setIsError(true)
+          setError('Token is not a string.')
           console.error('Login failed. Token is not a string.')
         }
       } else {
-        setIsError(true)
+        setError('Unexpected response format.')
         console.error('Login failed. Unexpected response format.')
       }
-    } catch (error) {
-      setIsError(true)
+    } catch (error: any) {
+      setError(error.message || 'An error occurred.')
       console.error('Login failed', error)
     } finally {
       setIsLoading(false)
@@ -59,9 +63,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   }
 
   return (
-    <AuthContext.Provider
-      value={{ isAuthenticated, login, isLoading, isError }}
-    >
+    <AuthContext.Provider value={{ isAuthenticated, login, isLoading, error }}>
       {children}
     </AuthContext.Provider>
   )

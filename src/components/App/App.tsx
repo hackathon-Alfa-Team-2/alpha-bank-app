@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import { AuthProvider } from '../Auth/AuthContext'
-import { useAuth } from '../Auth/useAuth'
+import { AuthProvider } from '../Auth/Auth.context'
+import { useAuth } from '../Auth/Auth.hooks'
 import './App.css'
 import MainRoutes from '../Main/MainRoutes'
 import { Auth } from '../Auth/Auth'

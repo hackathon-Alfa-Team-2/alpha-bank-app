@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, RouteProps, Navigate } from 'react-router-dom'
-import { useAuth } from './useAuth'
+import { useAuth } from '../components/Auth/Auth.hooks'
 
 type CustomRouteProps = RouteProps
 
