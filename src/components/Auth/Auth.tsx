@@ -1,15 +1,24 @@
 // Auth.tsx
 import { useState } from 'react'
-import { useAuth } from './Auth.hooks'
+import { useLoginMutation } from './Auth.api'
 
 export const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const { login, isLoading, error } = useAuth()
+  const [login, { isLoading, error }] = useLoginMutation()
 
-  const handleLogin = async () => {
-    login(email, password)
+  const handleLogin = () => {
+    login({ email, password })
+      .unwrap()
+      .then((response) => {
+        const authToken = JSON.parse(JSON.stringify(response))
+        console.log('Login successful', authToken.auth_token)
+        localStorage.setItem('access_token', authToken.auth_token)
+      })
+      .catch((error) => {
+        console.error('Login failed', error)
+      })
   }
 
   return (
@@ -34,7 +43,13 @@ export const Auth = () => {
       <button onClick={handleLogin} disabled={isLoading}>
         {isLoading ? 'Logging in...' : 'Login'}
       </button>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && (
+        <div style={{ color: 'red' }}>
+          {'status' in error && error.status
+            ? `Error ${error.status}: ${error.data}`
+            : 'An error occurred.'}
+        </div>
+      )}
     </div>
   )
 }
