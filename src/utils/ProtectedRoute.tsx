@@ -1,20 +1,17 @@
 import React from 'react'
-import { Route, RouteProps, Navigate } from 'react-router-dom'
-import { useAuth } from '../components/Auth/Auth.hooks'
+import { Navigate } from 'react-router-dom'
 
-type CustomRouteProps = RouteProps
+type CustomRouteProps = {
+  children: React.ReactNode
+}
 
 const ProtectedRoute: React.FC<CustomRouteProps> = ({
-  element,
-  ...rest
+  children,
 }: CustomRouteProps) => {
-  const { isAuthenticated } = useAuth()
+  const token = localStorage.getItem('access_token')
+  console.log('ProtectedRoute', token)
 
-  return isAuthenticated ? (
-    <Route {...rest} element={element} />
-  ) : (
-    <Navigate to='/auth' replace={true} />
-  )
+  return token ? <>{children}</> : <Navigate to='/auth' replace={true} />
 }
 
 export default ProtectedRoute

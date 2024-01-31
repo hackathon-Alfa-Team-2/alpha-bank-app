@@ -1,12 +1,14 @@
 // Auth.tsx
 import { useState } from 'react'
 import { useLoginMutation } from './Auth.api'
+import { useNavigate } from 'react-router-dom'
 
 export const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const [login, { isLoading, error }] = useLoginMutation()
+  const navigate = useNavigate()
 
   const handleLogin = () => {
     login({ email, password })
@@ -15,6 +17,7 @@ export const Auth = () => {
         const authToken = JSON.parse(JSON.stringify(response))
         console.log('Login successful', authToken.auth_token)
         localStorage.setItem('access_token', authToken.auth_token)
+        navigate('/employees')
       })
       .catch((error) => {
         console.error('Login failed', error)

@@ -4,14 +4,14 @@ import { Provider } from 'react-redux'
 import App from './components/App/App.tsx'
 import { store } from './store/store.tsx'
 import './index.css'
-import { AuthProvider } from './components/Auth/Auth.context.tsx'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <AuthProvider>
+    <BrowserRouter>
+      <Provider store={store}>
         <App />
-      </AuthProvider>
-    </Provider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
 )
