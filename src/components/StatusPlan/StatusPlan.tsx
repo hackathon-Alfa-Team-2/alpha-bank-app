@@ -59,7 +59,11 @@ export default function StatusPlan() {
             className='statusPlan__img'
             alt='иконка календаря'
           />
-          <select id='calendar' className='statusPlan__select'>
+          <select
+            id='calendar'
+            className='statusPlan__select'
+            defaultValue='calendar'
+          >
             <option value='В работе' className='statusPlan__option'>
               Выбрать дату
             </option>

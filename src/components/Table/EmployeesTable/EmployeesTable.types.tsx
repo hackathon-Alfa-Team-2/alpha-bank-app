@@ -1,3 +1,5 @@
+import { Status } from '../Table.types'
+
 /**
  * Тип данных для сотрудника.
  * @param id - Идентификатор сотрудника.
@@ -7,13 +9,13 @@
  * @param deadline - Срок выполнения задачи в формате строки.
  * @param status - Статус выполнения задачи сотрудником.
  */
-export type Employee = {
+export interface IEmployee extends Status {
   id: string
   avatar: string
   fullName: string
   position: string
   deadline: string
-  status: 'В работе' | 'Выполнен' | 'Отменён'
+  content: string
 }
 
 /**
@@ -23,9 +25,9 @@ export type SortOrder = 'none' | 'asc' | 'desc'
 export type SortField = 'none' | 'fullName' | 'deadline'
 
 /**
- * Пропсы для компонента EmployeeTable.
+ * Пропсы для компонента EmployeesTable.
  * @param employees - Массив данных сотрудников.
  */
-export type EmployeeTableProps = {
-  employees: Employee[]
+export interface IEmployeesTableProps {
+  employees: IEmployee[]
 }

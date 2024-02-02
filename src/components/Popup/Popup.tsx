@@ -1,3 +1,4 @@
+import './Popup.css'
 import Done from '../../assets/done.svg'
 import './Popup.css'
 

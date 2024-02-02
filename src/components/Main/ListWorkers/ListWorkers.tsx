@@ -1,8 +1,9 @@
 import { employees } from '../../../utils/mockData/employees'
-import EmployeeTable from '../EmployeeTable/EmployeeTable'
+import EmployeesTable from '../../Table/EmployeesTable/EmployeesTable'
 import './ListWorkers.css'
 import NoWorker from '../../../assets/no-worker.svg'
 import { useState } from 'react'
+
 // массив удалить
 const worker = [
   {
@@ -96,6 +97,7 @@ export default function ListWorkers() {
             Отменен
           </option>
         </select>
+
         <input
           type='date'
           id='calendar'
@@ -103,7 +105,7 @@ export default function ListWorkers() {
           placeholder='Дедлайн ИПР'
         />
       </div>
-      <EmployeeTable employees={employees} />
+      <EmployeesTable employees={employees} />
 
       {/* Это просто отображение что бы проверить как работает поиск, УДАЛИТЬ!!! */}
       <ul>
