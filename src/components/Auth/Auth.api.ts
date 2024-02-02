@@ -32,7 +32,7 @@ export const authApi = createApi({
       }),
     }),
     getUserData: builder.query<UserData, void>({
-      query: () => 'users/me/',
+      query: () => ({ url: 'users/me/', method: 'GET' }),
     }),
   }),
 })
