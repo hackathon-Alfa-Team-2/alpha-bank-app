@@ -10,6 +10,7 @@ import { toggleStatusBadgeStyles } from '../Table.helpers'
 //import { Status } from '../Table.types'
 import { useGetUsersQuery } from '../../Auth/Auth.api'
 import { Link } from 'react-router-dom'
+import UserInfoCard from '../../UserInfoCard/UserInfoCard'
 
 const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | 'none'>('none')
@@ -85,24 +86,11 @@ const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
 
       render: (employee: NewItem) => (
         <Link to={`/employees/${employee.id}`} className={styles.link}>
-          <div className={styles.infoCell}>
-            {employee.photo && (
-              <img
-                src={employee.photo}
-                alt='photo'
-                style={{ width: '50px', height: '50px' }}
-              />
-            )}
-            <div className={styles.infoCellContainer}>
-              <p className={styles.infoCellTitle}>
-                {employee.last_name} {employee.first_name}{' '}
-                {employee.second_name}{' '}
-              </p>
-              <span className={styles.infoCellSubtitle}>
-                {employee.position}
-              </span>
-            </div>
-          </div>
+          <UserInfoCard
+            photo={{ src: employee.photo, width: '50px', height: '50px' }}
+            fullName={`${employee.last_name} ${employee.first_name} ${employee.second_name}`}
+            position={employee.position}
+          />
         </Link>
       ),
     },

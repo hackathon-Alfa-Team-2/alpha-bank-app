@@ -15,13 +15,6 @@ const MainRoutes: React.FC = () => {
   const hasRoleSupervisor = userData?.role === 'supervisor'
   const hasRoleEmployee = userData?.role === 'employee'
 
-  //const { data } = useGetUserDataQuery()
-  //useEffect(() => {
-  //  if (data !== undefined) {
-  //    localStorage.setItem('userData', JSON.stringify(userData))
-  //  }
-  //})
-
   return (
     <Main>
       <Routes>
@@ -43,7 +36,7 @@ const MainRoutes: React.FC = () => {
           }
         />
         <Route
-          path='/employees/user/lms'
+          path='/employees/:id/lms'
           element={
             <ProtectedRoute hasRole={hasRoleSupervisor}>
               <IndidvidualPlan />

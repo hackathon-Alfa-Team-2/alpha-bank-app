@@ -1,5 +1,7 @@
-import './EmployeeInfo.css'
-import { useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { getUserData } from '../../utils/getUserData'
+import UserInfoCard from '../UserInfoCard/UserInfoCard'
+import styles from './EmployeeInfo.module.scss'
 
 interface IEmployeeInfoProps {
   first_name: string
@@ -18,31 +20,27 @@ export default function EmployeeInfo({
   position,
   photo,
 }: IEmployeeInfoProps) {
-  const location = useLocation()
+  const userData = getUserData()
+  const hasRoleSupervisor = userData?.role === 'supervisor'
+
   return (
-    <div className='aboutWorker__container-info'>
-      <img
-        src={photo}
-        className='aboutWorker__avatar'
-        alt='аватар сотрудника'
+    <div className={styles.container}>
+      <UserInfoCard
+        photo={{
+          src: photo,
+          width: '80px',
+          height: '80px',
+        }}
+        fullName={`${last_name} ${first_name} ${second_name}`}
+        position={`${grade} ${position}`}
+        fullNameFontSize='18px'
+        positionFontSize='18px'
       />
-      <div className='aboutWorker__container-profile'>
-        <h2 className='aboutWorker__fio'>
-          {last_name} {first_name} {second_name}
-        </h2>
-        <p className='aboutWorker__position'>
-          {grade} {position}
-        </p>
-      </div>
-      <button
-        className={`aboutWorker__button ${
-          location.pathname === '/list-of-workers/worker'
-            ? ''
-            : 'aboutWorker__button_display_none'
-        }`}
-      >
-        Создать ИПР +
-      </button>
+      {hasRoleSupervisor && (
+        <Link to={'/employees/:id/lms'}>
+          <button className={styles.button}>Создать ИПР +</button>
+        </Link>
+      )}
     </div>
   )
 }

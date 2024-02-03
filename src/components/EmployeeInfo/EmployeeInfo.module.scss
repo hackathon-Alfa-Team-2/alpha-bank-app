@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  margin: 32px 0;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 8px 20px;
+  margin: 20px 0 0 auto;
+  display: inline-flex;
+  height: 40px;
+  padding: 8px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+  background: #0e0e0e;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.14px;
+  cursor: pointer;
+}
