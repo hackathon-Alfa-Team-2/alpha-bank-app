@@ -1,4 +1,6 @@
-export type Status = { status: 'В работе' | 'Выполнен' | 'Отменён' }
+export type Status = {
+  status: 'completed' | 'in_progress' | 'not_done' | 'canceled'
+}
 
 export interface IColumns {
   title: JSX.Element

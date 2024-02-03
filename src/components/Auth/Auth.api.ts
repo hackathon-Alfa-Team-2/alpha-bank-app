@@ -41,6 +41,9 @@ export const authApi = createApi({
     getUserByID: builder.query<any, { id: string }>({
       query: (args) => ({ url: `users/${args.id}/`, method: 'GET' }),
     }),
+    getUserLMS: builder.query<any, { id: string }>({
+      query: (args) => ({ url: `users/${args.id}/lms`, method: 'GET' }),
+    }),
   }),
 })
 
@@ -49,4 +52,5 @@ export const {
   useGetUserDataQuery,
   useGetUsersQuery,
   useGetUserByIDQuery,
+  useGetUserLMSQuery,
 } = authApi

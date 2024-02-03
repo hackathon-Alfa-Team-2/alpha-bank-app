@@ -19,6 +19,6 @@ export const toggleStatusBadgeStyles = ({
   return cn(container, {
     [statusInWork]: data.status === 'in_progress',
     [statusCompleted]: data.status === 'completed',
-    [statusCanceled]: data.status === 'canceled',
+    [statusCanceled]: data.status === 'canceled' || data.status === 'not_done',
   })
 }

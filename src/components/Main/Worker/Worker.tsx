@@ -5,16 +5,16 @@ import EmployeeInfo from '../../EmployeeInfo/EmployeeInfo'
 import { Link, useParams } from 'react-router-dom'
 import Popup from '../../../components/Popup/Popup'
 import PlanTable from '../../Table/PlanTable/PlanTable'
-import { plans } from '../../../utils/mockData/plans'
-import { useGetUserByIDQuery } from '../../Auth/Auth.api'
+import { useGetUserByIDQuery, useGetUserLMSQuery } from '../../Auth/Auth.api'
 
 export default function Worker() {
   const { id } = useParams()
   const userId = id ? id : ''
 
-  const { data } = useGetUserByIDQuery({ id: userId })
+  const { data: userData } = useGetUserByIDQuery({ id: userId })
+  const { data: lmsData } = useGetUserLMSQuery({ id: userId })
 
-  console.log(data)
+  console.log(lmsData)
 
   return (
     <div className='worker'>
@@ -27,26 +27,29 @@ export default function Worker() {
           className='worker__arrow'
           alt='иконка стрелки вправо'
         />
-        {data && (
+        {userData && (
           <h3 className='worker__adress worker__adress_last'>
-            {data.last_name} {data.first_name} {data.second_name}
+            {userData.last_name} {userData.first_name} {userData.second_name}
           </h3>
         )}
         <Popup />
       </div>
-      {data && (
+      {userData && (
         <EmployeeInfo
-          first_name={data.first_name}
-          second_name={data.second_name}
-          last_name={data.last_name}
-          grade={data.grade}
-          position={data.position}
-          photo={data.photo}
+          first_name={userData.first_name}
+          second_name={userData.second_name}
+          last_name={userData.last_name}
+          grade={userData.grade}
+          position={userData.position}
+          photo={userData.photo}
         />
       )}
 
-      {plans.length !== 0 ? (
-        <PlanTable plan={plans} />
+      {lmsData ? (
+        <>
+          <PlanTable plan={lmsData} />
+          <div></div>
+        </>
       ) : (
         <div className='worker__container-noIPR worker__container-noIPR_display_flex'>
           <div className='worker__wrapperImg-noIPR'>

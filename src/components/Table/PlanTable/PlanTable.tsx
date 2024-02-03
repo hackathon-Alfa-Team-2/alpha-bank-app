@@ -14,10 +14,10 @@ const PlanTable = ({ plan }: IPlanTableProps) => {
   const columns: IColumns[] = [
     {
       title: <div>Индивидуальный план развития</div>,
-      field: ['title'],
+      field: ['name'],
       className: '',
       render: (data: any) => (
-        <span className={styles.infoCell}>{data.title}</span>
+        <span className={styles.infoCell}>{data.name}</span>
       ),
       dropdownContent: (data: IPlans) => (
         <div>
@@ -27,7 +27,7 @@ const PlanTable = ({ plan }: IPlanTableProps) => {
                 key={nanoid()}
                 className={cn(styles.rowContent, styles.dropdownContentRow)}
               >
-                <span className={styles.dropdownContentText}>{task.title}</span>
+                <span className={styles.dropdownContentText}>{task.name}</span>
                 <span className={styles.dropdownContentText}>
                   {task.deadline}
                 </span>
