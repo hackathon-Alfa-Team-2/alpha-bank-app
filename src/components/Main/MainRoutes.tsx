@@ -35,7 +35,7 @@ const MainRoutes: React.FC = () => {
           }
         />
         <Route
-          path='/employees/user'
+          path='/employees/:id'
           element={
             <ProtectedRoute hasRole={hasRoleSupervisor}>
               <Worker />

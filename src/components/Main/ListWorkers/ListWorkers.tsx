@@ -108,7 +108,7 @@ export default function ListWorkers() {
         return prevEmployees
       })
     } else {
-      console.error('Results not available')
+      console.error('Результаты недоступны')
     }
   }, [users])
 

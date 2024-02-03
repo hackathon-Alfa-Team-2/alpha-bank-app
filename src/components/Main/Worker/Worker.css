@@ -21,6 +21,10 @@
   color: #05081d61;
 }
 
+.worker__adress_last {
+  text-decoration-line: none;
+}
+
 .worker__arrow {
   width: 24px;
   height: 24px;

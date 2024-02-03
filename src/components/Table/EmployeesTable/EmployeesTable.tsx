@@ -9,6 +9,7 @@ import { NewItem, IEmployeesTableProps } from './EmployeesTable.types'
 import { toggleStatusBadgeStyles } from '../Table.helpers'
 //import { Status } from '../Table.types'
 import { useGetUsersQuery } from '../../Auth/Auth.api'
+import { Link } from 'react-router-dom'
 
 const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | 'none'>('none')
@@ -21,7 +22,7 @@ const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
       const userArray = users.results
       setUsersArray(userArray)
     } else {
-      console.error('Results not available')
+      console.error('Результаты недоступны')
     }
   }, [users, usersArray])
 
@@ -71,26 +72,38 @@ const EmployeesTable = ({ employees }: IEmployeesTableProps) => {
           )}
         </div>
       ),
-      field: ['last_name', 'first_name', 'second_name', 'photo', 'position'],
+      field: [
+        'last_name',
+        'first_name',
+        'second_name',
+        'photo',
+        'position',
+        'id',
+      ],
       className: styles.fullNameCell,
       sortable: true,
 
       render: (employee: NewItem) => (
-        <div className={styles.infoCell}>
-          {employee.photo && (
-            <img
-              src={employee.photo}
-              alt='photo'
-              style={{ width: '50px', height: '50px' }}
-            />
-          )}
-          <div className={styles.infoCellContainer}>
-            <p className={styles.infoCellTitle}>
-              {employee.last_name} {employee.first_name} {employee.second_name}
-            </p>
-            <span className={styles.infoCellSubtitle}>{employee.position}</span>
+        <Link to={`/employees/${employee.id}`} className={styles.link}>
+          <div className={styles.infoCell}>
+            {employee.photo && (
+              <img
+                src={employee.photo}
+                alt='photo'
+                style={{ width: '50px', height: '50px' }}
+              />
+            )}
+            <div className={styles.infoCellContainer}>
+              <p className={styles.infoCellTitle}>
+                {employee.last_name} {employee.first_name}{' '}
+                {employee.second_name}{' '}
+              </p>
+              <span className={styles.infoCellSubtitle}>
+                {employee.position}
+              </span>
+            </div>
           </div>
-        </div>
+        </Link>
       ),
     },
     {

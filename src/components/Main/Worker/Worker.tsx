@@ -1,13 +1,21 @@
 import './Worker.css'
 import ArrowRight from '../../../assets/arrowRight.svg'
 import NoIpr from '../../../assets/iconNoIPR.svg'
-import AboutWorker from '../../AboutWorker/AboutWorker'
-import { Link } from 'react-router-dom'
+import EmployeeInfo from '../../EmployeeInfo/EmployeeInfo'
+import { Link, useParams } from 'react-router-dom'
 import Popup from '../../../components/Popup/Popup'
 import PlanTable from '../../Table/PlanTable/PlanTable'
 import { plans } from '../../../utils/mockData/plans'
+import { useGetUserByIDQuery } from '../../Auth/Auth.api'
 
 export default function Worker() {
+  const { id } = useParams()
+  const userId = id ? id : ''
+
+  const { data } = useGetUserByIDQuery({ id: userId })
+
+  console.log(data)
+
   return (
     <div className='worker'>
       <div className='worker__container'>
@@ -19,10 +27,23 @@ export default function Worker() {
           className='worker__arrow'
           alt='иконка стрелки вправо'
         />
-        <h3 className='worker__adress'>$ФИО</h3>
+        {data && (
+          <h3 className='worker__adress worker__adress_last'>
+            {data.last_name} {data.first_name} {data.second_name}
+          </h3>
+        )}
         <Popup />
       </div>
-      <AboutWorker />
+      {data && (
+        <EmployeeInfo
+          first_name={data.first_name}
+          second_name={data.second_name}
+          last_name={data.last_name}
+          grade={data.grade}
+          position={data.position}
+          photo={data.photo}
+        />
+      )}
 
       {plans.length !== 0 ? (
         <PlanTable plan={plans} />

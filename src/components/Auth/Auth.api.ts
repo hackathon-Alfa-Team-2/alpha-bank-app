@@ -38,8 +38,15 @@ export const authApi = createApi({
     getUsers: builder.query<any, void>({
       query: () => ({ url: 'users/', method: 'GET' }),
     }),
+    getUserByID: builder.query<any, { id: string }>({
+      query: (args) => ({ url: `users/${args.id}/`, method: 'GET' }),
+    }),
   }),
 })
 
-export const { useLoginMutation, useGetUserDataQuery, useGetUsersQuery } =
-  authApi
+export const {
+  useLoginMutation,
+  useGetUserDataQuery,
+  useGetUsersQuery,
+  useGetUserByIDQuery,
+} = authApi
