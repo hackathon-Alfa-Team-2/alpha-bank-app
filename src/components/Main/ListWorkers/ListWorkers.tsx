@@ -1,8 +1,42 @@
-import { employees } from '../../../utils/mockData/employees'
 import EmployeesTable from '../../Table/EmployeesTable/EmployeesTable'
 import './ListWorkers.css'
 import NoWorker from '../../../assets/no-worker.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useGetUsersQuery } from '../../Auth/Auth.api'
+//import {
+//IEmployee,
+//IFlattenEmployee,
+//} from '../../Table/EmployeesTable/EmployeesTable.types'
+
+interface Lms {
+  name: string
+  deadline: string | null
+  status: string | null
+}
+
+interface InputItem {
+  id: number
+  first_name: string
+  second_name: string
+  last_name: string
+  position: string
+  photo: string | null
+  active_lms: Lms
+  supervisor: number
+}
+
+interface NewItem {
+  id: number
+  first_name: string
+  second_name: string
+  last_name: string
+  position: string
+  photo: string | null
+  name: string
+  deadline: string | null
+  status: string | null
+  supervisor: number
+}
 
 // массив удалить
 const worker = [
@@ -31,6 +65,52 @@ const worker = [
 export default function ListWorkers() {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState(worker)
+
+  function flattenObjects(inputArray: InputItem[]): NewItem[] {
+    return inputArray.map((item) => {
+      const newItem: NewItem = {
+        id: item.id,
+        first_name: item.first_name,
+        second_name: item.second_name,
+        last_name: item.last_name,
+        position: item.position,
+        photo: item.photo,
+        name: item.active_lms.name,
+        deadline: item.active_lms.deadline,
+        status: item.active_lms.status,
+        supervisor: item.supervisor,
+      }
+
+      return newItem
+    })
+  }
+
+  const [employees, setEmployees] = useState<NewItem[]>([])
+
+  console.log(JSON.stringify(employees, null, 2))
+
+  const { data: users } = useGetUsersQuery()
+  useEffect(() => {
+    if (users && users.results) {
+      const userArray = users.results
+      const flat = flattenObjects(userArray)
+
+      setEmployees((prevEmployees) => {
+        // Если предыдущее состояние не определено, или JSON-представления различны
+        if (
+          !prevEmployees ||
+          JSON.stringify(prevEmployees) !== JSON.stringify(flat)
+        ) {
+          return flat
+        }
+
+        // В противном случае возвращаем предыдущее состояние
+        return prevEmployees
+      })
+    } else {
+      console.error('Results not available')
+    }
+  }, [users])
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value

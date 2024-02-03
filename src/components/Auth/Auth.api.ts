@@ -34,7 +34,12 @@ export const authApi = createApi({
     getUserData: builder.query<UserData, void>({
       query: () => ({ url: 'users/me/', method: 'GET' }),
     }),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getUsers: builder.query<any, void>({
+      query: () => ({ url: 'users/', method: 'GET' }),
+    }),
   }),
 })
 
-export const { useLoginMutation, useGetUserDataQuery } = authApi
+export const { useLoginMutation, useGetUserDataQuery, useGetUsersQuery } =
+  authApi

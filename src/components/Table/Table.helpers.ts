@@ -1,8 +1,8 @@
 import cn from 'classnames'
-import { Status } from './Table.types'
+//import { Status } from './Table.types'
 
 interface IToggleStatusBadgeStyles {
-  data: Status
+  data: { status: string | null }
   container: string
   statusInWork: string
   statusCompleted: string
@@ -17,8 +17,8 @@ export const toggleStatusBadgeStyles = ({
   statusCanceled,
 }: IToggleStatusBadgeStyles) => {
   return cn(container, {
-    [statusInWork]: data.status === 'В работе',
-    [statusCompleted]: data.status === 'Выполнен',
-    [statusCanceled]: data.status === 'Отменён',
+    [statusInWork]: data.status === 'in_progress',
+    [statusCompleted]: data.status === 'completed',
+    [statusCanceled]: data.status === 'canceled',
   })
 }
