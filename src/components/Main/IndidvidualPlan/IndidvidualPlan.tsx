@@ -11,6 +11,12 @@ import {
 import StatusPlan from '../../StatusPlan/StatusPlan'
 import './IndidvidualPlan.css'
 import Modal from '../../../containers/Modal/Modal'
+import ErrorModal from '../../ErrorModal/ErrorModal'
+
+interface IErrorData {
+  status: number
+  data: { description: string[]; name: string[]; status: string[] }
+}
 
 export default function IndidvidualPlan() {
   const { userId } = useParams()
@@ -20,13 +26,24 @@ export default function IndidvidualPlan() {
   const [description, setDescription] = useState('')
 
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false)
+  const [errorData, setErrorData] = useState<IErrorData>({
+    status: 400,
+    data: {
+      name: ['Это поле не может быть пустым.'],
+      description: ['Это поле не может быть пустым.'],
+      status: ['Значения completed нет среди допустимых вариантов.'],
+    },
+  })
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true)
-  }
+  console.log('errorData', JSON.stringify(errorData, null, 2), isErrorModalOpen)
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
+  }
+
+  const handleCloseErrorModal = () => {
+    setIsErrorModalOpen(false)
   }
 
   console.log(lms)
@@ -60,8 +77,10 @@ export default function IndidvidualPlan() {
       }
 
       console.log('LMS создан успешно:', JSON.stringify(response.data?.id))
-    } catch (error) {
+    } catch (error: any) {
       console.error('Ошибка создания LMS:', error)
+      setErrorData(error)
+      setIsErrorModalOpen(true)
     }
   }
 
@@ -127,7 +146,9 @@ export default function IndidvidualPlan() {
       </div>
       <StatusPlan />
 
-      <button onClick={handleOpenModal}>Открыть модальное окно</button>
+      <button onClick={() => setIsModalOpen(true)}>
+        Открыть модальное окно
+      </button>
 
       <Modal.Overlay
         isOpen={isModalOpen}
@@ -154,9 +175,18 @@ export default function IndidvidualPlan() {
             <h2>Содержимое модального окна</h2>
             <p>Дополнительный текст</p>
           </Modal.Window>
-          <Modal.Close onClick={handleCloseModal} />
+          <Modal.Close onClick={handleCloseModal}>Закрыть</Modal.Close>
         </Modal>
       </Modal.Overlay>
+      {errorData.status !== 0 && (
+        <ErrorModal
+          isOpen={isErrorModalOpen}
+          onClose={handleCloseErrorModal}
+          statusCode={errorData.status}
+          description={errorData.data?.description}
+          name={errorData.data?.name}
+        />
+      )}
     </div>
   )
 }

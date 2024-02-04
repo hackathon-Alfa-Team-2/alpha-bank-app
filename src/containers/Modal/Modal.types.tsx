@@ -12,6 +12,7 @@ export interface IModalContextProps {
 
 export interface IModalCloseProps extends IStyledComponentProps {
   onClick: () => void
+  children: React.ReactNode
 }
 
 export interface IModalOverlayProps extends IStyledComponentProps {

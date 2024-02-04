@@ -56,7 +56,7 @@ const Modal = ({ className, style, children }: IModalProps) => {
   )
 }
 
-const Window = ({ children, style }: IModalProps) => {
+const Window = ({ children, style, className }: IModalProps) => {
   const { isOpen } = useModalContext()
   return (
     <AnimatePresence>
@@ -66,6 +66,7 @@ const Window = ({ children, style }: IModalProps) => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           style={style}
+          className={className}
           onClick={handleForbiddenClose}
         >
           {children}
@@ -75,10 +76,10 @@ const Window = ({ children, style }: IModalProps) => {
   )
 }
 
-const Close = ({ style, onClick }: IModalCloseProps) => {
+const Close = ({ style, onClick, className, children }: IModalCloseProps) => {
   return (
-    <button style={style} onClick={onClick}>
-      Close
+    <button className={className} style={style} onClick={onClick}>
+      {children}
     </button>
   )
 }
