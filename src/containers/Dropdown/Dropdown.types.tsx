@@ -32,3 +32,8 @@ export type TDropdownProps<T extends keyof ReactHTML | ComponentType<any>> = {
 export type TDropdownContentProps = {
   children: ReactNode
 } & IStyledComponentProps
+
+export type TDropdownContextType = {
+  isOpen: boolean
+  toggle: () => void
+}
