@@ -11,6 +11,17 @@ export interface UserData {
   photo: string | null
 }
 
+interface ILms {
+  id?: string | number
+  name: string
+  description: string
+  is_active: boolean
+  deadline: string
+  status: string
+  skill_assessment_before: number
+  skill_assessment_after: number
+}
+
 export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://127.0.0.1:8000/api/v1/',
@@ -29,6 +40,13 @@ export const authApi = createApi({
         url: 'auth/token/login/',
         method: 'POST',
         body,
+      }),
+    }),
+    createLMS: builder.mutation<ILms, { userId: string; data: ILms }>({
+      query: ({ userId, data }) => ({
+        url: `/users/${userId}/lms/`,
+        method: 'POST',
+        body: data,
       }),
     }),
     getUserData: builder.query<UserData, void>({
@@ -53,4 +71,5 @@ export const {
   useGetUsersQuery,
   useGetUserByIDQuery,
   useGetUserLMSQuery,
+  useCreateLMSMutation,
 } = authApi

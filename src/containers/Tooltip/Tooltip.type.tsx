@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { TStyledComponentProps } from '../../types'
+import { IStyledComponentProps } from '../../types'
 
 /**
  * Интерфейс контекста для Tooltip.
@@ -17,4 +17,4 @@ export type TTooltipContextType = {
  */
 export type TTooltipProps = {
   children: ReactNode
-} & TStyledComponentProps
+} & IStyledComponentProps

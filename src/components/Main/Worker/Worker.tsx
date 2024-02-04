@@ -8,18 +8,18 @@ import PlanTable from '../../Table/PlanTable/PlanTable'
 import { useGetUserByIDQuery, useGetUserLMSQuery } from '../../Auth/Auth.api'
 
 export default function Worker() {
-  const { id } = useParams()
-  const userId = id ? id : ''
+  const { userId } = useParams()
+  const id = userId ? userId : ''
 
-  const { data: userData } = useGetUserByIDQuery({ id: userId })
-  const { data: lmsData } = useGetUserLMSQuery({ id: userId })
+  const { data: userData } = useGetUserByIDQuery({ id: id })
+  const { data: lmsData } = useGetUserLMSQuery({ id: id })
 
-  console.log(lmsData)
+  console.log('userId', userId)
 
   return (
     <div className='worker'>
       <div className='worker__container'>
-        <Link to={'/list-of-workers'} className='worker__adress'>
+        <Link to={'/employees'} className='worker__adress'>
           Все ИПР
         </Link>
         <img

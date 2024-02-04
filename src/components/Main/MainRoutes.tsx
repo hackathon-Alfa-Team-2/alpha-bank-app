@@ -28,7 +28,7 @@ const MainRoutes: React.FC = () => {
           }
         />
         <Route
-          path='/employees/:id'
+          path='/employees/:userId'
           element={
             <ProtectedRoute hasRole={hasRoleSupervisor}>
               <Worker />
@@ -36,7 +36,15 @@ const MainRoutes: React.FC = () => {
           }
         />
         <Route
-          path='/employees/:id/lms'
+          path='/employees/:userId/lms'
+          element={
+            <ProtectedRoute hasRole={hasRoleSupervisor}>
+              <IndidvidualPlan />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/employees/:userId/lms/:lmsId'
           element={
             <ProtectedRoute hasRole={hasRoleSupervisor}>
               <IndidvidualPlan />

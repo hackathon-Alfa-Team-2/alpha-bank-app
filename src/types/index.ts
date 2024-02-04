@@ -3,7 +3,7 @@
  * @param className - Необязательное имя класса для добавления пользовательских стилей.
  * @param style - Необязательные инлайновые стили.
  */
-export type TStyledComponentProps = {
+export type IStyledComponentProps = {
   className?: string
   style?: React.CSSProperties
 }

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getUserData } from '../../utils/getUserData'
 import UserInfoCard from '../UserInfoCard/UserInfoCard'
 import styles from './EmployeeInfo.module.scss'
@@ -20,6 +20,7 @@ export default function EmployeeInfo({
   position,
   photo,
 }: IEmployeeInfoProps) {
+  const { userId } = useParams()
   const userData = getUserData()
   const hasRoleSupervisor = userData?.role === 'supervisor'
 
@@ -37,7 +38,7 @@ export default function EmployeeInfo({
         positionFontSize='18px'
       />
       {hasRoleSupervisor && (
-        <Link to={'/employees/:id/lms'}>
+        <Link to={`/employees/${userId}/lms`}>
           <button className={styles.button}>Создать ИПР +</button>
         </Link>
       )}
