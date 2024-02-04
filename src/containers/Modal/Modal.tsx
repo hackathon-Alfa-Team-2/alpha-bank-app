@@ -1,22 +1,20 @@
-import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ModalContext } from './Modal.context'
 import { useModalContext } from './Modal.hooks'
-import { ModalProps, ModalWindowProps, ModalCloseProps } from './Modal.types'
-
-const handleForbiddenClose = (e: React.MouseEvent<HTMLDivElement>) => {
-  e.stopPropagation() // Предотвращаем всплытие события
-}
+import {
+  IModalProps,
+  IModalCloseProps,
+  IModalOverlayProps,
+} from './Modal.types'
+import { handleForbiddenClose } from './Modal.helpers'
 
 const Overlay = ({
   isOpen,
   onClose,
   children,
-}: {
-  isOpen: boolean
-  onClose: () => void
-  children: React.ReactNode
-}) => {
+  style,
+  className,
+}: IModalOverlayProps) => {
   const handleOverlayClick = () => {
     onClose()
   }
@@ -29,15 +27,8 @@ const Overlay = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              zIndex: 9999,
-            }}
+            style={style}
+            className={className}
             onClick={handleOverlayClick}
           >
             {children}
@@ -48,20 +39,14 @@ const Overlay = ({
   )
 }
 
-const Modal = ({ className, style, children }: ModalProps) => {
+const Modal = ({ className, style, children }: IModalProps) => {
   return (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        style={{
-          ...style,
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}
+        style={style}
         className={className}
         onClick={handleForbiddenClose}
       >
@@ -71,7 +56,7 @@ const Modal = ({ className, style, children }: ModalProps) => {
   )
 }
 
-const Window = ({ children, style }: ModalWindowProps) => {
+const Window = ({ children, style }: IModalProps) => {
   const { isOpen } = useModalContext()
   return (
     <AnimatePresence>
@@ -90,7 +75,7 @@ const Window = ({ children, style }: ModalWindowProps) => {
   )
 }
 
-const Close = ({ style, onClick }: ModalCloseProps) => {
+const Close = ({ style, onClick }: IModalCloseProps) => {
   return (
     <button style={style} onClick={onClick}>
       Close

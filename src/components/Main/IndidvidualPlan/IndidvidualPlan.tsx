@@ -129,8 +129,27 @@ export default function IndidvidualPlan() {
 
       <button onClick={handleOpenModal}>Открыть модальное окно</button>
 
-      <Modal.Overlay isOpen={isModalOpen} onClose={handleCloseModal}>
-        <Modal style={{ border: '1px solid red', padding: '20px' }}>
+      <Modal.Overlay
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 9999,
+        }}
+      >
+        <Modal
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
           <Modal.Window style={{ border: '1px solid blue' }}>
             <h2>Содержимое модального окна</h2>
             <p>Дополнительный текст</p>

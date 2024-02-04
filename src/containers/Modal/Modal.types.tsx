@@ -1,21 +1,21 @@
 import { ReactNode } from 'react'
 import { IStyledComponentProps } from '../../types'
 
-export interface ModalProps extends IStyledComponentProps {
-  //isOpen: boolean
-  //onClose: () => void
+export interface IModalProps extends IStyledComponentProps {
   children: ReactNode
 }
 
-export interface ModalContextProps {
+export interface IModalContextProps {
   isOpen: boolean
   onClose: () => void
 }
 
-export interface ModalWindowProps extends IStyledComponentProps {
-  children: ReactNode
+export interface IModalCloseProps extends IStyledComponentProps {
+  onClick: () => void
 }
 
-export interface ModalCloseProps extends IStyledComponentProps {
-  onClick: () => void
+export interface IModalOverlayProps extends IStyledComponentProps {
+  isOpen: boolean
+  onClose: () => void
+  children: React.ReactNode
 }
