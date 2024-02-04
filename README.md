@@ -7,7 +7,7 @@
 ## Используемые технологии
 
 - ⚛️[React](https://ru.reactjs.org/)
-- 🔧[Redux Toolkit](https://redux-toolkit.js.org/)
+- 🔧[Redux Toolkit Query](https://redux-toolkit.js.org/)
 - TS [TypeScript](https://www.typescriptlang.org/)
 
 ## Инструкции по установке и запуску
@@ -15,7 +15,8 @@
 1. Клонируйте репозиторий: `git clone git@github.com:hackathon-Alfa-Team-2/alpha-bank-app.git`
 2. Перейдите в директорию проекта: `cd alpha-bank-app`
 3. Установите зависимости: `npm install`
-4. Запустите проект: `npm run dev`
+4. Создайте файл `.env` на основе `.env.example` или `.env.local.example`
+5. Запустите проект: `npm run dev`
 
 ## Скриншоты
 

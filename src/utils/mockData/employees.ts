@@ -1,12 +1,12 @@
 import { nanoid } from 'nanoid'
-import { Employee } from '../../components/Main/EmployeeTable/EmployeeTable.type'
+import { IEmployee } from '../../components/Table/EmployeesTable/EmployeesTable.types'
 import Filippov_Alexander_Romanovich from './employeesPics/Filippov_Alexander_Romanovich.png'
 import Ivanov_Peter_Alexandrovich from './employeesPics/Ivanov_Peter_Alexandrovich.png'
 import Ivanov_Sergey_Petrovich from './employeesPics/Ivanov_Sergey_Petrovich.png'
 import Kukushkina_Oksana_Sergeevna from './employeesPics/Kukushkina_Oksana_Sergeevna.png'
 import Sokolova_Sofya_Nikolaevna from './employeesPics/Sokolova_Sofya_Nikolaevna.png'
 
-export const employees: Employee[] = [
+export const employees: IEmployee[] = [
   {
     id: nanoid(),
     avatar: Filippov_Alexander_Romanovich,
@@ -14,6 +14,7 @@ export const employees: Employee[] = [
     position: 'JavaScript Разработчик',
     deadline: '10.01.2024',
     status: 'В работе',
+    content: 'Филиппов Александр Романович',
   },
   {
     id: nanoid(),
@@ -22,6 +23,7 @@ export const employees: Employee[] = [
     position: 'Аналитик',
     deadline: '23.12.2023',
     status: 'Выполнен',
+    content: 'Иванов Пётр Александрович',
   },
   {
     id: nanoid(),
@@ -30,6 +32,7 @@ export const employees: Employee[] = [
     position: 'UI/UX Дизайнер',
     deadline: '15.12.2023',
     status: 'Отменён',
+    content: 'Кукушкина Оксана Сергеевна',
   },
   {
     id: nanoid(),
@@ -38,6 +41,7 @@ export const employees: Employee[] = [
     position: 'Разработчик',
     deadline: '10.01.2024',
     status: 'В работе',
+    content: 'Иванов Сергей Петрович',
   },
   {
     id: nanoid(),
@@ -46,5 +50,6 @@ export const employees: Employee[] = [
     position: 'UI/UX Дизайнер',
     deadline: '01.06.2023',
     status: 'Выполнен',
+    content: 'Соколова Софья Николаевна',
   },
 ]

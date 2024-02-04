@@ -1,0 +1,48 @@
+@import '../../styles/colors.scss';
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $text-secondary;
+  z-index: 9999;
+}
+
+.window {
+  background: $bg-primary;
+  padding: 30px 45px;
+  border-radius: 26px;
+}
+
+.title {
+  color: $accent-primary;
+  font-size: 28px;
+}
+
+.button {
+  padding: 8px 20px;
+  margin: 20px 0 0 auto;
+  display: inline-flex;
+  height: 40px;
+  padding: 8px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+  background: #0e0e0e;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.14px;
+  cursor: pointer;
+}

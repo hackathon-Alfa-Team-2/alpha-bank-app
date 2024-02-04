@@ -1,5 +1,6 @@
-import './popup.css'
+import './Popup.css'
 import Done from '../../assets/done.svg'
+import './Popup.css'
 
 export default function Popup() {
   return (

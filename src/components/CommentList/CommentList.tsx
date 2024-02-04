@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Comment from '../Comment/Comment'
 import styles from './CommentList.module.scss'
 import image from '../../images/Profile-photo.png'

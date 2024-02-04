@@ -2,7 +2,7 @@ import { waitFor } from '@testing-library/react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Dropdown from './Dropdown'
-import { useDropdownContext } from './hooks/useDropdownContext'
+import { useDropdownContext } from './Dropdown.hooks'
 
 describe('Dropdown component', () => {
   // Перед запуском тестов, мокаем глобальный объект window.scrollTo
@@ -11,7 +11,7 @@ describe('Dropdown component', () => {
   })
 
   // Мокаем модуль useDropdownContext, чтобы изолировать его поведение в тестах
-  jest.mock('./hooks/useDropdownContext', () => ({
+  jest.mock('./Dropdown.hooks', () => ({
     useDropdownContext: jest.fn(),
   }))
 

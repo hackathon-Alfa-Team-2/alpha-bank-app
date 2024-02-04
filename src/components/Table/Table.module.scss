@@ -1,0 +1,141 @@
+@import '../../styles/colors.scss';
+
+@mixin primaryStyle($background) {
+  &Primary {
+    @include statusStyle($background);
+  }
+}
+
+@mixin secondaryStyle($background, $text) {
+  &Secondary {
+    @include statusStyle($background, $text);
+  }
+}
+
+@mixin statusStyle($background, $text: null) {
+  background-color: $background;
+
+  @if $text != null {
+    color: $text;
+  }
+}
+
+%primary-text {
+  color: $text-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+
+%tableGrid {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+}
+
+.header {
+  @extend %tableGrid;
+  grid-template-columns: 1fr 160px 120px;
+  padding: 24px 24px 24px 12px;
+
+  &Cell {
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: $text-secondary;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 16px;
+    letter-spacing: 1.44px;
+  }
+
+  &Sort {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.row {
+  border-top: 1px solid $text-quaternary;
+  padding: 24px 24px 24px 12px;
+  @extend %primary-text;
+
+  &Content {
+    grid-template-columns: 1fr 160px 120px;
+    @extend %tableGrid;
+  }
+
+  &Trigger {
+    grid-template-columns: 1fr 160px 120px;
+    cursor: pointer;
+    @extend %tableGrid;
+  }
+}
+
+.cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status {
+  &Badge {
+    border-radius: 4px;
+    width: fit-content;
+    padding: 6px 8px;
+    color: $white;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 11px;
+    letter-spacing: 0.14px;
+  }
+
+  &InWork {
+    @include primaryStyle($status-blue);
+    @include secondaryStyle(getColorWithAlpha($status-blue, 12%), $status-blue);
+  }
+
+  &Completed {
+    @include primaryStyle($status-green);
+    @include secondaryStyle(getColorWithAlpha($status-green, 12%), $status-green);
+  }
+  
+  &Canceled {
+    @include primaryStyle($status-grey);
+    @include secondaryStyle(getColorWithAlpha($status-grey, 12%), $status-grey);
+  }
+}
+
+.dropdownContent {
+  margin: 0;
+  &Row {
+    border-top: 1px solid $text-quaternary;
+    padding: 16px 0 16px 48px;
+
+    &:first-child {
+      margin-top: 24px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &Text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}

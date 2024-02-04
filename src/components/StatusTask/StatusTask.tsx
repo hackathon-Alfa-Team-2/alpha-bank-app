@@ -1,7 +1,8 @@
-import './statusTask.css'
+import './StatusTask.css'
 import Flag from '../../assets/flag.svg'
 import Calendar from '../../assets/calendar.svg'
 import Buttons from '../Buttons/Buttons'
+import './StatusTask.css'
 
 export default function StatusTask() {
   return (
