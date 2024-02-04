@@ -11,20 +11,22 @@ export interface UserData {
   photo: string | null
 }
 
-interface ILms {
+export interface ILms {
   id?: string | number
-  name: string
-  description: string
-  is_active: boolean
-  deadline: string
-  status: string
-  skill_assessment_before: number
-  skill_assessment_after: number
+  name?: string
+  description?: string
+  is_active?: boolean
+  deadline?: string
+  status?: string
+  skill_assessment_before?: number
+  skill_assessment_after?: number
 }
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const authApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://127.0.0.1:8000/api/v1/',
+    baseUrl: API_BASE_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('access_token')
       if (token) {
@@ -49,18 +51,43 @@ export const authApi = createApi({
         body: data,
       }),
     }),
+    editLMS: builder.mutation<
+      ILms,
+      { userId: string; data: ILms; lmsId: string }
+    >({
+      query: ({ userId, data, lmsId }) => ({
+        url: `/users/${userId}/lms/${lmsId}/`,
+        method: 'PATCH',
+        body: data,
+      }),
+    }),
+    createTask: builder.mutation<
+      ILms,
+      { userId: string; lmsId: string; data: ILms }
+    >({
+      query: ({ userId, lmsId, data }) => ({
+        url: `/users/${userId}/lms/${lmsId}/tasks/`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
     getUserData: builder.query<UserData, void>({
       query: () => ({ url: 'users/me/', method: 'GET' }),
     }),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getUsers: builder.query<any, void>({
       query: () => ({ url: 'users/', method: 'GET' }),
     }),
     getUserByID: builder.query<any, { id: string }>({
       query: (args) => ({ url: `users/${args.id}/`, method: 'GET' }),
     }),
-    getUserLMS: builder.query<any, { id: string }>({
-      query: (args) => ({ url: `users/${args.id}/lms`, method: 'GET' }),
+    getUserLMSAll: builder.query<any, { id: string }>({
+      query: (args) => ({ url: `users/${args.id}/lms/`, method: 'GET' }),
+    }),
+    getUserLMS: builder.query<any, { id: string; lmsId: string }>({
+      query: (args) => ({
+        url: `users/${args.id}/lms/${args.lmsId}/`,
+        method: 'GET',
+      }),
     }),
   }),
 })
@@ -70,6 +97,8 @@ export const {
   useGetUserDataQuery,
   useGetUsersQuery,
   useGetUserByIDQuery,
-  useGetUserLMSQuery,
+  useGetUserLMSAllQuery,
   useCreateLMSMutation,
+  useEditLMSMutation,
+  useGetUserLMSQuery,
 } = authApi

@@ -1,12 +1,15 @@
-import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getFormattedDate } from 'tictic'
 import ArrowRight from '../../../assets/arrowRight.svg'
 import Plus from '../../../assets/plus.svg'
 import {
   useCreateLMSMutation,
   useGetUserByIDQuery,
+  //useGetUserLMSAllQuery,
   useGetUserLMSQuery,
+  //useEditLMSMutation,
+  ILms,
 } from '../../Auth/Auth.api'
 import StatusPlan from '../../StatusPlan/StatusPlan'
 import './IndidvidualPlan.css'
@@ -19,24 +22,70 @@ interface IErrorData {
 }
 
 export default function IndidvidualPlan() {
-  const { userId } = useParams()
+  const { userId, lmsId } = useParams()
   const { data: userData } = useGetUserByIDQuery({ id: userId || '' })
-  const { data: lms } = useGetUserLMSQuery({ id: userId || '' })
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+  //const { data: lms } = useGetUserLMSAllQuery({ id: userId || '' })
+  const { data: lmsById } = useGetUserLMSQuery({
+    id: userId || '',
+    lmsId: lmsId || '',
+  })
+  const navigate = useNavigate()
+  const [requestData, setRequestData] = useState<ILms>({})
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false)
   const [errorData, setErrorData] = useState<IErrorData>({
-    status: 400,
+    status: 0,
     data: {
-      name: ['Это поле не может быть пустым.'],
-      description: ['Это поле не может быть пустым.'],
-      status: ['Значения completed нет среди допустимых вариантов.'],
+      name: [''],
+      description: [''],
+      status: [''],
     },
   })
 
-  console.log('errorData', JSON.stringify(errorData, null, 2), isErrorModalOpen)
+  useEffect(() => {
+    const handleCreateLMS = async () => {
+      const requestData = {
+        name: `${Date.now()}`,
+        description: `${Date.now()}`,
+        is_active: false,
+        deadline: getFormattedDate({
+          date: new Date('2025-03-25'),
+          sep: '-',
+          format: 'YYYY-MM-DD',
+        }),
+        status: 'Выполнен',
+        skill_assessment_before: 5,
+        skill_assessment_after: 5,
+      }
+
+      try {
+        const id = userId ? userId : ''
+        const response = await createLMSMutation({
+          userId: id,
+          data: requestData,
+        })
+
+        if ('error' in response) {
+          throw response.error
+        }
+
+        if (response.data?.id) {
+          navigate(`/employees/${userId}/lms/${response.data?.id}`)
+        }
+      } catch (error: any) {
+        console.error('Ошибка создания LMS:', error)
+        setErrorData(error)
+        setIsErrorModalOpen(true)
+      }
+    }
+
+    if (!lmsId) {
+      handleCreateLMS()
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
@@ -46,43 +95,15 @@ export default function IndidvidualPlan() {
     setIsErrorModalOpen(false)
   }
 
-  console.log(lms)
-
   const [createLMSMutation] = useCreateLMSMutation()
+  //const [editLMSMutation] = useEditLMSMutation()
 
-  const handleCreateLMS = async () => {
-    const requestData = {
-      name: title,
-      description: description,
-      is_active: false,
-      deadline: getFormattedDate({
-        date: new Date('2025-03-25'),
-        sep: '-',
-        format: 'YYYY-MM-DD',
-      }),
-      status: 'completed',
-      skill_assessment_before: 5,
-      skill_assessment_after: 5,
-    }
+  useEffect(() => {
+    setRequestData(lmsById)
+    setRequestData({ name: '', description: '' })
+  }, [lmsById])
 
-    try {
-      const id = userId ? userId : ''
-      const response = await createLMSMutation({
-        userId: id,
-        data: requestData,
-      })
-
-      if ('error' in response) {
-        throw response.error
-      }
-
-      console.log('LMS создан успешно:', JSON.stringify(response.data?.id))
-    } catch (error: any) {
-      console.error('Ошибка создания LMS:', error)
-      setErrorData(error)
-      setIsErrorModalOpen(true)
-    }
-  }
+  console.log('requestData', requestData)
 
   return (
     <div className='indidvidualPlan'>
@@ -116,34 +137,36 @@ export default function IndidvidualPlan() {
           name='textAreaPlan__title'
           id='textAreaPlan__title'
           className='textAreaPlan__title'
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={requestData?.name}
+          onChange={(e) => setRequestData({ name: e.target.value })}
           placeholder='Ввести название'
         />
         <textarea
           name='textAreaPlan__description'
           id='textAreaPlan__description'
           className='textAreaPlan__description'
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={requestData?.description}
+          onChange={(e) => setRequestData({ description: e.target.value })}
           placeholder='Ввести описание'
         />
       </div>
       <StatusPlan />
       <h3 className='indidvidualPlan__tasks'>Задачи</h3>
-      <div className='indidvidualPlan__container-tasks'>
-        <img
-          src={Plus}
-          className='indidvidualPlan__img-tasks'
-          alt='иконка плюсика'
-        />
-        <p
-          onClick={() => handleCreateLMS()}
-          className='indidvidualPlan__add-task'
-        >
-          Добавить задачу
-        </p>
-      </div>
+      <Link to={`/employees/${userId}/lms/${lmsId}/tasks`}>
+        <div className='indidvidualPlan__container-tasks'>
+          <img
+            src={Plus}
+            className='indidvidualPlan__img-tasks'
+            alt='иконка плюсика'
+          />
+          <p
+            //onClick={() => handleCreateLMS()}
+            className='indidvidualPlan__add-task'
+          >
+            Добавить задачу
+          </p>
+        </div>
+      </Link>
       <StatusPlan />
 
       <button onClick={() => setIsModalOpen(true)}>

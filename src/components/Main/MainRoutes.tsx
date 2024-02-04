@@ -9,6 +9,7 @@ import IndidvidualPlan from './IndidvidualPlan/IndidvidualPlan'
 import { Auth } from '../Auth/Auth'
 import ProtectedRoute from './ProtectedRoute'
 import { getUserData } from '../../utils/getUserData'
+import ViewTask from './ViewTask/ViewTask'
 
 const MainRoutes: React.FC = () => {
   const userData = getUserData()
@@ -48,6 +49,14 @@ const MainRoutes: React.FC = () => {
           element={
             <ProtectedRoute hasRole={hasRoleSupervisor}>
               <IndidvidualPlan />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/employees/:userId/lms/:lmsId/tasks'
+          element={
+            <ProtectedRoute hasRole={hasRoleSupervisor}>
+              <ViewTask />
             </ProtectedRoute>
           }
         />

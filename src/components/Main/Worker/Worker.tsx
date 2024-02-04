@@ -5,14 +5,14 @@ import EmployeeInfo from '../../EmployeeInfo/EmployeeInfo'
 import { Link, useParams } from 'react-router-dom'
 import Popup from '../../../components/Popup/Popup'
 import PlanTable from '../../Table/PlanTable/PlanTable'
-import { useGetUserByIDQuery, useGetUserLMSQuery } from '../../Auth/Auth.api'
+import { useGetUserByIDQuery, useGetUserLMSAllQuery } from '../../Auth/Auth.api'
 
 export default function Worker() {
   const { userId } = useParams()
   const id = userId ? userId : ''
 
   const { data: userData } = useGetUserByIDQuery({ id: id })
-  const { data: lmsData } = useGetUserLMSQuery({ id: id })
+  const { data: lmsData } = useGetUserLMSAllQuery({ id: id })
 
   console.log('userId', userId)
 
